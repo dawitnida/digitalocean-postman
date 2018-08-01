@@ -1,0 +1,2447 @@
+{
+  "info": {
+    "_postman_id": "88f1749e-4624-40ef-b327-a87184c7ea19",
+    "name": "DigitalOcean API-V2",
+    "description": "## API v2 Introduction\r\nWelcome to the DigitalOcean API documentation.\r\n\r\nThe DigitalOcean API allows you to manage Droplets and resources within the DigitalOcean cloud in a simple, programmatic way using conventional HTTP requests. The endpoints are intuitive and powerful, allowing you to easily make calls to retrieve information or to execute actions.\r\n\r\nAll of the functionality that you are familiar with in the DigitalOcean control panel is also available through the API, allowing you to script the complex actions that your situation requires.\r\n\r\nThe API documentation will start with a general overview about the design and technology that has been implemented, followed by reference information about specific endpoints.\r\n\r\nRequests\r\nAny tool that is fluent in HTTP can communicate with the API simply by requesting the correct URI. Requests should be made using the HTTPS protocol so that traffic is encrypted. The interface responds to different methods depending on the action required.\r\n\r\nMethod\tUsage\r\nGET\t\r\nFor simple retrieval of information about your account, Droplets, or environment, you should use the GET method. The information you request will be returned to you as a JSON object.\r\n\r\nThe attributes defined by the JSON object can be used to form additional requests. Any request using the GET method is read-only and will not affect any of the objects you are querying.\r\n\r\nDELETE\t\r\nTo destroy a resource and remove it from your account and environment, the DELETE method should be used. This will remove the specified object if it is found. If it is not found, the operation will return a response indicating that the object was not found.\r\n\r\nThis idempotency means that you do not have to check for a resource's availability prior to issuing a delete command, the final state will be the same regardless of its existence.\r\n\r\nPUT\t\r\nTo update the information about a resource in your account, the PUT method is available.\r\n\r\nLike the DELETE Method, the PUT method is idempotent. It sets the state of the target using the provided values, regardless of their current values. Requests using the PUT method do not need to check the current attributes of the object.\r\n\r\nPOST\t\r\nTo create a new object, your request should specify the POST method.\r\n\r\nThe POST request includes all of the attributes necessary to create a new object. When you wish to create a new object, send a POST request to the target endpoint.\r\n\r\nHEAD\t\r\nFinally, to retrieve metadata information, you should use the HEAD method to get the headers. This returns only the header of what would be returned with an associated GET request.\r\n\r\nResponse headers contain some useful information about your API access and the results that are available for your request.\r\n\r\nFor instance, the headers contain your current rate-limit value and the amount of time available until the limit resets. It also contains metrics about the total number of objects found, pagination information, and the total content length.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Account",
+      "description": "Name\t\t\t\tType\t\tDescription\r\ndroplet_limit\t\tinteger\t\tThe total number of droplets the user may have\r\nfloating_ip_limit\tinteger\t\tThe total number of floating IPs the user may have\r\nemail\t\t\t\tstring\t\tThe email the user has registered for Digital Ocean with\r\nuuid\t\t\t\tstring (alphanumeric)\tThe universal identifier for this user\r\nemail_verified\t\tboolean\t\tIf true, the user has verified their account via email. False otherwise.\r\nstatus\t\t\t\tstring\t\tThis value is one of \"active\", \"warning\" or \"locked\".\r\nstatus_message\t\tstring\t\tA human-readable message giving more details about the status of the account.\r\n",
+      "item": [
+        {
+          "name": "Get User Information",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/account",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account"
+              ]
+            },
+            "description": "Get [DigitalOcean](https://www.digitalocean.com/) account"
+          },
+          "response": [
+            {
+              "id": "b42f979d-1634-4e4d-b13d-3b0eb1870244",
+              "name": "Failed to authenticate",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/account",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "account"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443a654a1e3c5ba5-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 18:33:53 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "fb823905-1040-4e33-b2de-7187549eb261",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"id\": \"unauthorized\", \"message\": \"Unable to authenticate you.\" }"
+            },
+            {
+              "id": "5e1e2dc0-db3e-4730-8cea-8d60d34485d7",
+              "name": "Failed to authenticate",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer b7d03a6947b217efb6f3ec3bd3504582",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "https://api.digitalocean.com/v2/account",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "digitalocean",
+                    "com"
+                  ],
+                  "path": [
+                    "v2",
+                    "account"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443a5fbbd93f5ba5-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 18:30:05 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "__cfduid=dddc37f9edb69c5c3d2047e5e4060a9fc1533148205; expires=Thu, 01-Aug-19 18:30:05 GMT; path=/; domain=.digitalocean.com; HttpOnly",
+                  "name": "Set-Cookie",
+                  "description": "an HTTP cookie"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "7fbf5054-fc6a-4e4b-9f6e-443681d69068",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"id\": \"unauthorized\", \"message\": \"Unable to authenticate you.\" }"
+            },
+            {
+              "id": "b562e820-986b-42e5-a3fa-5608bc81fd08",
+              "name": "Get User Information",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/account",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "account"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443ac7279fac5b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:40:42 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"26d334e4f07ab09d00c9b2612adf23c1\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4990",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "3f9ed76d-0e12-4a8b-ab42-f7f5cdbb8c0f",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.070912",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\n    \"account\": {\n        \"droplet_limit\": 1,\n        \"floating_ip_limit\": 1,\n        \"email\": \"postman-do@gmail.com\",\n        \"uuid\": \"fe87d52a44365d3d8781365d3d8781365d3d8781ed68\",\n        \"email_verified\": true,\n        \"status\": \"active\",\n        \"status_message\": \"\"\n    }\n}"
+            }
+          ]
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "3636f17d-28e1-4924-abdd-28e967acfcec",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "47d22316-7323-4743-9737-05ea9889a93d",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Domain",
+      "description": "Domain resources are domain names that you have purchased from a domain name registrar that you are managing through the DigitalOcean DNS interface.\r\n\r\nThis resource establishes top-level control over each domain. Actions that affect individual domain records should be taken on the Domain Records resource.\r\n\r\nName\tType\tDescription\r\nname\tstring\tThe name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.\r\nttl\tinteger\tThis value is the time to live for the records on this domain, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.\r\nzone_file\tstring\tThis attribute contains the complete contents of the zone file for the selected domain. Individual domain record resources should be used to get more granular control over records. However, this attribute can also be used to get information about the SOA record, which is created automatically and is not accessible as an individual record resource.",
+      "item": [
+        {
+          "name": "List all Domains",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/domains",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "domains"
+              ]
+            },
+            "description": "To retrieve a list of all of the domains in your account, send a GET request to /v2/domains.\r\n\r\nThe response will be a JSON object with a key called domains."
+          },
+          "response": [
+            {
+              "id": "006e70d7-b1b4-45c9-9b08-07978c8a40cc",
+              "name": "List all Domains",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/domains",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "domains"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443ac3324c825b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:38:00 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"24e9776fa0dd4b1665a765a6d736dfbf\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4991",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "e4a9f9b2-3842-469b-a4b9-7cea832314c2",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.111270",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\r\n  \"domains\": [\r\n    {\r\n      \"name\": \"domain.club\",\r\n      \"ttl\": 1800,\r\n      \"zone_file\": \"$ORIGIN domain.club.\\n$TTL 1800\\naddis.club. IN SOA ns1.digitalocean.com. hostmaster.domain.club. 15315189009 108100 3600 6041800 18700\\naddis.club. 1800 IN NS ns1.digitalocean.com.\\ndomain.club. 1800 IN NS ns2.digitalocean.com.\\ndomain.club. 18200 IN NS ns3.digitalocean.com.\\ndomain.club. 1800 IN A 95.185.54.213\\n\"\r\n    },\r\n    {\r\n      \"name\": \"domain.site\",\r\n      \"ttl\": 1800,\r\n      \"zone_file\": \"$ORIGIN domain.site.\\n$TTL 1800\\naddis.site. IN SOA ns1.digitalocean.com. hostmaster.domain.site. 1481320410 108100 36100 604800 18700\\ndomain.site. 1800 IN NS ns1.digitalocean.com.\\ndomain.site. 11800 IN NS ns2.digitalocean.com.\\naddis.site. 18020 IN NS ns3.digitalocean.com.\\ndomain.site. 1800 IN A 95.185.54.223\\n\"\r\n    }\r\n  ],\r\n  \"links\": {\r\n    \r\n  },\r\n  \"meta\": {\r\n    \"total\": 2\r\n  }\r\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Droplets",
+      "description": "A Droplet is a DigitalOcean virtual machine. By sending requests to the Droplet endpoint, you can list, create, or delete Droplets.\r\n\r\nSome of the attributes will have an object value. The region and image objects will all contain the standard attributes of their associated types. Find more information about each of these objects in their respective sections.\r\n\r\nName\tType\tDescription\r\nid\tinteger\tA unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.\r\nname\tstring\tThe human-readable name set for the Droplet instance.\r\nmemory\tinteger\tMemory of the Droplet in megabytes.\r\nvcpus\tinteger\tThe number of virtual CPUs.\r\ndisk\tinteger\tThe size of the Droplet's disk in gigabytes.\r\nlocked\tboolean\tA boolean value indicating whether the Droplet has been locked, preventing actions by users.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the Droplet was created.\r\nstatus\tstring\tA status string indicating the state of the Droplet instance. This may be \"new\", \"active\", \"off\", or \"archive\".\r\nbackup_ids\tarray\tAn array of backup IDs of any backups that have been taken of the Droplet instance. Droplet backups are enabled at the time of the instance creation.\r\nsnapshot_ids\tarray\tAn array of snapshot IDs of any snapshots created from the Droplet instance.\r\nfeatures\tarray\tAn array of features enabled on this Droplet.\r\nregion\tobject\tThe region that the Droplet instance is deployed in. When setting a region, the value should be the slug identifier for the region. When you query a Droplet, the entire region object will be returned.\r\nimage\tobject\tThe base image used to create the Droplet instance. When setting an image, the value is set to the image id or slug. When querying the Droplet, the entire image object will be returned.\r\nsize\tobject\tThe current size object describing the Droplet. When setting a size, the value is set to the size slug. When querying the Droplet, the entire size object will be returned. Note that the disk volume of a Droplet may not match the size's disk due to Droplet resize actions. The disk attribute on the Droplet should always be referenced.\r\nsize_slug\tstring\tThe unique slug identifier for the size of this Droplet.\r\nnetworks\tobject\tThe details of the network that are configured for the Droplet instance. This is an object that contains keys for IPv4 and IPv6. The value of each of these is an array that contains objects describing an individual IP resource allocated to the Droplet. These will define attributes like the IP address, netmask, and gateway of the specific network depending on the type of network it is.\r\nkernel\tnullable object\tThe current kernel. This will initially be set to the kernel of the base image when the Droplet is created.\r\nnext_backup_window\tnullable object\tThe details of the Droplet's backups feature, if backups are configured for the Droplet. This object contains keys for the start and end times of the window during which the backup will start.\r\ntags\tarray\tAn array of Tags the Droplet has been tagged with.\r\nvolume_ids\tarray\tA flat array including the unique identifier for each Block Storage volume attached to the Droplet.",
+      "item": [
+        {
+          "name": "Create a new Droplet",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"region\": \"{{region}}\",\r\n  \"size\": \"{{size}}\",\r\n  \"image\": \"{{image}}\",\r\n  \"ssh_keys\": null,\r\n  \"backups\": false,\r\n  \"ipv6\": true,\r\n  \"user_data\": null,\r\n  \"private_networking\": null,\r\n  \"volumes\": null,\r\n  \"tags\": [\r\n    \"web\"\r\n  ]\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/droplets",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "droplets"
+              ]
+            },
+            "description": "To create a new Droplet, send a POST request to /v2/droplets.\n\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "List All Droplets",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/droplets?page={{page}}1&per_page={{per_page}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "droplets"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{per_page}}"
+                }
+              ]
+            },
+            "description": "To list all Droplets in your account, send a GET request to /v2/droplets.\r\n\r\nThe response body will be a JSON object with a key of droplets. This will be set to an array containing objects representing each Droplet."
+          },
+          "response": [
+            {
+              "id": "43ae058b-1817-4206-bf19-d60a3d0d3b5c",
+              "name": "No droplets found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/droplets?page={{page}}1&per_page={{per_page}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "droplets"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "{{page}}1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "{{per_page}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443ac24e9ac55b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:37:23 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"839d0c633d5c3bfdf44b5d576df966df\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4993",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "a5bfe9f3-4f8f-46b9-9f1c-a8586b85c72e",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.125551",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"droplets\":[],\"links\":{\"pages\":{\"first\":\"https://api.digitalocean.com/v2/droplets?page=1&per_page=2\",\"prev\":\"https://api.digitalocean.com/v2/droplets?page=10&per_page=2\"}},\"meta\":{\"total\":0}}"
+            }
+          ]
+        },
+        {
+          "name": "Listing Droplets by Tag",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/droplets?tag_name={{tag_name}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "droplets"
+              ],
+              "query": [
+                {
+                  "key": "tag_name",
+                  "value": "{{tag_name}}"
+                }
+              ]
+            },
+            "description": "To list Droplets by a tag, send a GET request to /v2/droplets?tag_name=$TAG_NAME.\r\n\r\nThe response will match that of regular droplet listing request but will be filtered to only include the tagged Droplets."
+          },
+          "response": [
+            {
+              "id": "1b2642ea-29cf-45f9-a622-e7c3716de44a",
+              "name": "Listing Droplets by Tag None",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/droplets?tag_name={{tag_name}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "droplets"
+                  ],
+                  "query": [
+                    {
+                      "key": "tag_name",
+                      "value": "{{tag_name}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443ac2d72ffc5b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "45",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:37:45 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "\"bac5ba7fdd38e408acacd265c650c985\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4992",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "c561e7b3-2380-49a6-b311-c640b77fc519",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.133030",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"droplets\":[],\"links\":{},\"meta\":{\"total\":0}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "description": "Images in DigitalOcean may refer to one of a few different kinds of objects.\r\n\r\nAn image may refer to a snapshot that has been taken of a Droplet instance. It may also mean an image representing an automatic backup of a Droplet. The third category that it can represent is a public Linux distribution or application image that is used as a base to create Droplets.\r\n\r\nTo interact with images, you will generally send requests to the images endpoint at /v2/images.\r\n\r\nName\tType\tDescription\r\nid\tinteger\tA unique number that can be used to identify and reference a specific image.\r\nname\tstring\tThe display name that has been given to an image. This is what is shown in the control panel and is generally a descriptive title for the image in question.\r\ntype\tstring\tThe kind of image, describing the duration of how long the image is stored. This is either \"snapshot\" or \"backup\".\r\ndistribution\tstring\tThis attribute describes the base distribution used for this image.\r\nslug\tnullable string\tA uniquely identifying string that is associated with each of the DigitalOcean-provided public images. These can be used to reference a public image as an alternative to the numeric id.\r\npublic\tboolean\tThis is a boolean value that indicates whether the image in question is public or not. An image that is public is available to all accounts. A non-public image is only accessible from your account.\r\nregions\tarray\tThis attribute is an array of the regions that the image is available in. The regions are represented by their identifying slug values.\r\nmin_disk_size\tinteger\tThe minimum 'disk' required for a size to use this image.\r\nsize_gigabytes\tinteger\tThe size of the image in gigabytes.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the Image was created.",
+      "item": [
+        {
+          "name": "Retrieve an existing Image by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/images/{{image_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "images",
+                "{{image_id}}"
+              ]
+            },
+            "description": "To retrieve information about an image (public or private), send a GET request to /v2/images/$IMAGE_ID.\r\n\r\nThe response will be a JSON object with a key called image. The value of this will be an image object containing the standard image attributes:"
+          },
+          "response": [
+            {
+              "id": "d9e8d854-e63a-4e06-8a5a-c09591086f5f",
+              "name": "Retrieve an existing Image by id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/images/{{image_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "images",
+                    "{{image_id}}"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443ac9dd2dad5b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:42:33 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4985",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "2cc5e399-8cee-4055-98bb-1c6265b0bf97",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.066111",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"id\":\"not_found\",\"message\":\"The resource you were accessing could not be found.\"}"
+            }
+          ]
+        },
+        {
+          "name": "Delete an Image",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/images/{{image_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "images",
+                "{{image_id}}"
+              ]
+            },
+            "description": "To delete an image, send a DELETE request to /v2/images/$IMAGE_ID.\r\n\r\nA status of 204 will be given. This indicates that the request was processed successfully, but that no response body is needed"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Regions",
+      "description": "A region in DigitalOcean represents a datacenter where Droplets can be deployed and images can be transferred.\r\n\r\nEach region represents a specific datacenter in a geographic location. Some geographical locations may have multiple \"regions\" available. This means that there are multiple datacenters available within that area.\r\n\r\nName\t\tType\tDescription\r\nslug\t\tstring\tA human-readable string that is used as a unique identifier for each region.\r\nname\t\tstring\tThe display name of the region. This will be a full name that is used in the control panel and other interfaces.\r\nsizes\t\tarray\tThis attribute is set to an array which contains the identifying slugs for the sizes available in this region.\r\navailable\tboolean\tThis is a boolean value that represents whether new Droplets can be created in this region.\r\nfeatures\tarray\tThis attribute is set to an array which contains features available in this region",
+      "item": [
+        {
+          "name": "List all Regions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/regions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "regions"
+              ]
+            },
+            "description": "To list all of the regions that are available, send a GET request to /v2/regions.\r\n\r\nThe response will be a JSON object with a key called _regions_. "
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Snapshots",
+      "description": "Snapshots are saved instances of a Droplet or a volume, which is reflected in the resource_type attribute. In order to avoid problems with compressing filesystems, each defines a min_disk_size attribute which is the minimum size of the Droplet or volume disk when creating a new resource from the saved snapshot.\r\n\r\nTo interact with snapshots, you will generally send requests to the snapshots endpoint at /v2/snapshots.\r\n\r\nName\tType\tDescription\r\nid\tstring\tThe unique identifier for the snapshot.\r\nname\tstring\tA human-readable name for the snapshot.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the snapshot was created.\r\nregions\tarray\tAn array of the regions that the image is available in. The regions are represented by their identifying slug values.\r\nresource_id\tstring\tA unique identifier for the resource that the action is associated with.\r\nresource_type\tstring\tThe type of resource that the action is associated with.\r\nmin_disk_size\tinteger\tThe minimum size in GB required for a volume or Droplet to use this snapshot.\r\nsize_gigabytes\tinteger\tThe billable size of the snapshot in gigabytes.",
+      "item": [
+        {
+          "name": "List all snapshots",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/snapshots?page={{page}}&per_page={{per_page}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "snapshots"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{per_page}}"
+                }
+              ]
+            },
+            "description": "To list all of the snapshots available on your account, send a GET request to /v2/snapshots.\r\n\r\nThe response will be a JSON object with a key called snapshots."
+          },
+          "response": [
+            {
+              "id": "4294a43a-9cd6-423d-aac5-57e2d03f892a",
+              "name": "List all snapshots",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/snapshots?page={{page}}&per_page={{per_page}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "snapshots"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "{{page}}"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "{{per_page}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443aca74eb4b5b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "46",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:43:00 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "\"d95c6dd3a10399f194a528d2440e1fbf\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4983",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "c280a36d-f80b-414b-9558-e847cbbc52d2",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "3.346053",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"snapshots\":[],\"links\":{},\"meta\":{\"total\":0}}"
+            }
+          ]
+        },
+        {
+          "name": "List all Droplet snapshots",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/snapshots?page={{page}}&per_page={{per_page}}&resource_type=droplet",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "snapshots"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{per_page}}"
+                },
+                {
+                  "key": "resource_type",
+                  "value": "droplet"
+                }
+              ]
+            },
+            "description": "To retrieve only snapshots based on Droplets, include the resource_type query paramter set to droplet, /v2/snapshots?resource_type=droplet.\n"
+          },
+          "response": []
+        },
+        {
+          "name": "List all Volume snapshots",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/snapshots?page={{page}}&per_page={{per_page}}&resource_type=volume",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "snapshots"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{per_page}}"
+                },
+                {
+                  "key": "resource_type",
+                  "value": "volume"
+                }
+              ]
+            },
+            "description": "To retrieve only snapshots based on volumes, include the resource_type query paramter set to volume, /v2/snapshots?resource_type=volume."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sizes",
+      "description": "The sizes objects represent different packages of hardware resources that can be used for Droplets. When a Droplet is created, a size must be selected so that the correct resources can be allocated.\r\n\r\nEach size represents a plan that bundles together specific sets of resources. This includes the amount of RAM, the number of virtual CPUs, disk space, and transfer. The size object also includes the pricing details and the regions that the size is available in.\r\n\r\nName\tType\tDescription\r\nslug\tstring\tA human-readable string that is used to uniquely identify each size.\r\navailable\tboolean\tThis is a boolean value that represents whether new Droplets can be created with this size.\r\ntransfer\tinteger\tThe amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.\r\nprice_monthly\tinteger\tThis attribute describes the monthly cost of this Droplet size if the Droplet is kept for an entire month. The value is measured in US dollars.\r\nprice_hourly\tinteger\tThis describes the price of the Droplet size as measured hourly. The value is measured in US dollars.\r\nmemory\tinteger\tThe amount of RAM allocated to Droplets created of this size. The value is represented in megabytes.\r\nvcpus\tinteger\tThe integer of number CPUs allocated to Droplets of this size.\r\ndisk\tinteger\tThe amount of disk space set aside for Droplets of this size. The value is represented in gigabytes.\r\nregions\tarray\tAn array containing the region slugs where this size is available for Droplet creates.",
+      "item": [
+        {
+          "name": "List all Sizes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/sizes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "sizes"
+              ]
+            },
+            "description": "To list all of the sizes, send a GET request to /v2/sizes.\r\n\r\nThe response will be a JSON object with a key called _sizes_. "
+          },
+          "response": [
+            {
+              "id": "e1d91f13-49f6-4244-936a-4636677918fb",
+              "name": "List all Sizes",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/sizes",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "sizes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443abf11fd8d5b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:35:11 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"80858d62af205ac16f3a7b93606f8005\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4999",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "bf22fe42-a225-4ab4-9ce1-30421e112793",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.382804",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"sizes\":[{\"slug\":\"512mb\",\"memory\":512,\"vcpus\":1,\"disk\":20,\"transfer\":1.0,\"price_monthly\":5.0,\"price_hourly\":0.007439999841153622,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"s-1vcpu-1gb\",\"memory\":1024,\"vcpus\":1,\"disk\":25,\"transfer\":1.0,\"price_monthly\":5.0,\"price_hourly\":0.007439999841153622,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"1gb\",\"memory\":1024,\"vcpus\":1,\"disk\":30,\"transfer\":2.0,\"price_monthly\":10.0,\"price_hourly\":0.01487999968230724,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"s-1vcpu-2gb\",\"memory\":2048,\"vcpus\":1,\"disk\":50,\"transfer\":2.0,\"price_monthly\":10.0,\"price_hourly\":0.01487999968230724,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"s-1vcpu-3gb\",\"memory\":3072,\"vcpus\":1,\"disk\":60,\"transfer\":3.0,\"price_monthly\":15.0,\"price_hourly\":0.02232000045478344,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"s-2vcpu-2gb\",\"memory\":2048,\"vcpus\":2,\"disk\":60,\"transfer\":3.0,\"price_monthly\":15.0,\"price_hourly\":0.02232000045478344,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"s-3vcpu-1gb\",\"memory\":1024,\"vcpus\":3,\"disk\":60,\"transfer\":3.0,\"price_monthly\":15.0,\"price_hourly\":0.02232000045478344,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"2gb\",\"memory\":2048,\"vcpus\":2,\"disk\":40,\"transfer\":3.0,\"price_monthly\":20.0,\"price_hourly\":0.02975999936461449,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"s-2vcpu-4gb\",\"memory\":4096,\"vcpus\":2,\"disk\":80,\"transfer\":4.0,\"price_monthly\":20.0,\"price_hourly\":0.02975999936461449,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"c-1vcpu-2gb\",\"memory\":2048,\"vcpus\":1,\"disk\":25,\"transfer\":3.0,\"price_monthly\":20.0,\"price_hourly\":0.02975999936461449,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"4gb\",\"memory\":4096,\"vcpus\":2,\"disk\":60,\"transfer\":4.0,\"price_monthly\":40.0,\"price_hourly\":0.05951999872922897,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"c-2\",\"memory\":4096,\"vcpus\":2,\"disk\":25,\"transfer\":4.0,\"price_monthly\":40.0,\"price_hourly\":0.05999999865889549,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"s-4vcpu-8gb\",\"memory\":8192,\"vcpus\":4,\"disk\":160,\"transfer\":5.0,\"price_monthly\":40.0,\"price_hourly\":0.05951999872922897,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"8gb\",\"memory\":8192,\"vcpus\":4,\"disk\":80,\"transfer\":5.0,\"price_monthly\":80.0,\"price_hourly\":0.1190500035881996,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"s-6vcpu-16gb\",\"memory\":16384,\"vcpus\":6,\"disk\":320,\"transfer\":6.0,\"price_monthly\":80.0,\"price_hourly\":0.1190500035881996,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"16gb\",\"memory\":16384,\"vcpus\":8,\"disk\":160,\"transfer\":6.0,\"price_monthly\":160.0,\"price_hourly\":0.2381000071763992,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":true},{\"slug\":\"s-8vcpu-32gb\",\"memory\":32768,\"vcpus\":8,\"disk\":640,\"transfer\":7.0,\"price_monthly\":160.0,\"price_hourly\":0.2381000071763992,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":false},{\"slug\":\"s-12vcpu-48gb\",\"memory\":49152,\"vcpus\":12,\"disk\":960,\"transfer\":8.0,\"price_monthly\":240.0,\"price_hourly\":0.3571400046348572,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":false},{\"slug\":\"32gb\",\"memory\":32768,\"vcpus\":12,\"disk\":320,\"transfer\":7.0,\"price_monthly\":320.0,\"price_hourly\":0.4761900007724762,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":false},{\"slug\":\"s-16vcpu-64gb\",\"memory\":65536,\"vcpus\":16,\"disk\":1280,\"transfer\":9.0,\"price_monthly\":320.0,\"price_hourly\":0.4761900007724762,\"regions\":[\"ams2\",\"ams3\",\"blr1\",\"fra1\",\"lon1\",\"nyc1\",\"nyc2\",\"nyc3\",\"sfo1\",\"sfo2\",\"sgp1\",\"tor1\"],\"available\":false}],\"links\":{\"pages\":{\"last\":\"https://api.digitalocean.com/v2/sizes?page=2\",\"next\":\"https://api.digitalocean.com/v2/sizes?page=2\"}},\"meta\":{\"total\":25}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tags",
+      "description": "A Tag is a label that can be applied to a resource (currently only Droplets) in order to better organize or facilitate the lookups and actions on it.\r\n\r\nTags have two attributes: a user defined name attribute and an embedded resources attribute with information about resources that have been tagged.\r\n\r\nName\tType\tDescription\r\nname\tstring\tTags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.\r\nresources\tobject\tAn embedded object containing key value pairs of resource type and resource statistics.\r\nTagged Resource Statistics include metadata regarding the resource type that has been tagged.\r\n\r\nName\tType\tDescription\r\nlast_tagged\tobject\tThe last tagged object for this type of resource\r\ncount\tinteger\tThe number tagged objects for this type of resource",
+      "item": [
+        {
+          "name": "Create a new Tag",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"{{tag_name}}\"\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tags",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tags"
+              ]
+            },
+            "description": "To create a Tag you can send a POST request to /v2/tags with a name attribute.\r\n\r\nThe response will be a JSON object with a key called _tag_."
+          },
+          "response": [
+            {
+              "id": "da6f1951-7e94-4b1e-a033-6f57d8f4648b",
+              "name": "Create a new Tag success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"{{tag_name}}\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/tags",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443ac0e41af75b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "90",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:36:25 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4997",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "f6c83331-2497-4e25-b48f-586d546f07c3",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.016682",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"tag\":{\"name\":\"postman-do-tag\",\"resources\":{\"droplets\":{\"count\":0,\"last_tagged\":null}}}}\n"
+            }
+          ]
+        },
+        {
+          "name": "List all Tags",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/tags",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tags"
+              ]
+            },
+            "description": "To list all of your tags, you can send a GET request to /v2/tags.\r\n\r\nThe response will be a JSON object with a key called _tags_. "
+          },
+          "response": [
+            {
+              "id": "56dcfd15-45d1-4f7d-a956-0a30334b4b23",
+              "name": "List all Tags",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/tags",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443ac194397d5b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:36:53 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4995",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "60a25a2e-eb9c-4b86-a8ec-91d1befedcc6",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.013992",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"tags\":[{\"name\":\"postman-do-tag\",\"resources\":{\"droplets\":{\"count\":0,\"last_tagged\":null}}}],\"links\":{},\"meta\":{\"total\":1}}\n"
+            },
+            {
+              "id": "30688150-7d5b-47eb-8736-454712c4f026",
+              "name": "Empty tags",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/tags",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443abfa22ef55b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "42",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:35:33 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4998",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "e39e940a-daa1-430c-b9d5-47aa678eb4ae",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.010729",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"tags\":[],\"links\":{},\"meta\":{\"total\":0}}\n"
+            }
+          ]
+        },
+        {
+          "name": "Tag a Resource",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resources\": [\r\n    {\r\n      \"resource_id\": \"{{resource_id}}\",\r\n      \"resource_type\": \"droplet\"\r\n    }\r\n  ]\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tags/{{tag_name}}/resources",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tags",
+                "{{tag_name}}",
+                "resources"
+              ]
+            },
+            "description": "Resources can be tagged by sending a POST request to /v2/tags/$TAG_NAME/resources with an array of json objects containing resource_id and resource_type attributes.\r\n\r\nCurrently only tagging of Droplets is supported. resource_id is expected to be the Droplet's id attribute as a string, and resource_type is expected to be the string droplet."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "22ce4cf1-7a5e-4fa9-9b83-effb492a8646",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "35e7e27c-ffe6-4a31-a6dd-04cc9922e142",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "0972e405-88c4-4334-a450-870e090d80be",
+      "key": "name",
+      "value": "digitalocean.fi",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "8ff7dc36-3c8e-4ab8-afe6-bc6e388667de",
+      "key": "region",
+      "value": "nyc3",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "ca4cf85a-77f3-407d-9c2a-db94ca66dcca",
+      "key": "size",
+      "value": "s-1vcpu-1gb",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "111d9ebf-7b60-4104-8752-694992c2f46a",
+      "key": "image",
+      "value": "ubuntu-16-04-x64",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "67fe3eb2-42b8-48e9-a204-c506f44ce525",
+      "key": "resource_id",
+      "value": "523311244",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "d48a2cff-971b-4bbd-872d-b2f036cf9221",
+      "key": "tag_name",
+      "value": "postman-do-tag",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "daf59625-714a-429c-ac8d-bc4304902a66",
+      "key": "image_id",
+      "value": "63261821",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}

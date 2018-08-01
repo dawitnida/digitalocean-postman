@@ -1,0 +1,33 @@
+{
+  "id": "16c627dc-7299-42ff-a9a6-9c61ed5a37e6",
+  "name": "DigitalOcean Env",
+  "values": [
+    {
+      "enabled": true,
+      "key": "base_url",
+      "value": "https://api.digitalocean.com/v2",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "bearer_token",
+      "value": "<Get it from the OAuth2 authentication>",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "page",
+      "value": "1",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "per_page",
+      "value": "2",
+      "type": "text"
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2018-08-01T19:54:22.648Z",
+  "_postman_exported_using": "Postman/6.1.4"
+}
