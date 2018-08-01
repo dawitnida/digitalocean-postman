@@ -16,15 +16,15 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 
 ![Postman](images/do-api-postman-collection.jpg)
 
-###Keys and variables
+# Keys and variables
 
-#####Environment level
+## Environment level
 - base_url
 - bearer_token
 - page
 - per_page
 
-#####Collection level
+## Collection level
 - name (domain)
 - tag_name
 - image name
@@ -32,14 +32,14 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - resource_id
 - region
 
-####TODOs
+## TODOs
 - Actions
 - Droplet Actions
 - Floating IPs
 - Firewalls
 - Load Balancers & more
 
-###Author
+## Author
 [Dawit Nida](https://github.com/dawitnida)
 
 [do-github]: <https://github.com/digitalocean>
