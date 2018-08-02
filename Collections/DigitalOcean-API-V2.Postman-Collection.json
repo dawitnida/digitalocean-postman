@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "88f1749e-4624-40ef-b327-a87184c7ea19",
+    "_postman_id": "e902cbcc-5109-4672-a5a1-246fe304eaca",
     "name": "DigitalOcean API-V2",
     "description": "## API v2 Introduction\r\nWelcome to the DigitalOcean API documentation.\r\n\r\nThe DigitalOcean API allows you to manage Droplets and resources within the DigitalOcean cloud in a simple, programmatic way using conventional HTTP requests. The endpoints are intuitive and powerful, allowing you to easily make calls to retrieve information or to execute actions.\r\n\r\nAll of the functionality that you are familiar with in the DigitalOcean control panel is also available through the API, allowing you to script the complex actions that your situation requires.\r\n\r\nThe API documentation will start with a general overview about the design and technology that has been implemented, followed by reference information about specific endpoints.\r\n\r\nRequests\r\nAny tool that is fluent in HTTP can communicate with the API simply by requesting the correct URI. Requests should be made using the HTTPS protocol so that traffic is encrypted. The interface responds to different methods depending on the action required.\r\n\r\nMethod\tUsage\r\nGET\t\r\nFor simple retrieval of information about your account, Droplets, or environment, you should use the GET method. The information you request will be returned to you as a JSON object.\r\n\r\nThe attributes defined by the JSON object can be used to form additional requests. Any request using the GET method is read-only and will not affect any of the objects you are querying.\r\n\r\nDELETE\t\r\nTo destroy a resource and remove it from your account and environment, the DELETE method should be used. This will remove the specified object if it is found. If it is not found, the operation will return a response indicating that the object was not found.\r\n\r\nThis idempotency means that you do not have to check for a resource's availability prior to issuing a delete command, the final state will be the same regardless of its existence.\r\n\r\nPUT\t\r\nTo update the information about a resource in your account, the PUT method is available.\r\n\r\nLike the DELETE Method, the PUT method is idempotent. It sets the state of the target using the provided values, regardless of their current values. Requests using the PUT method do not need to check the current attributes of the object.\r\n\r\nPOST\t\r\nTo create a new object, your request should specify the POST method.\r\n\r\nThe POST request includes all of the attributes necessary to create a new object. When you wish to create a new object, send a POST request to the target endpoint.\r\n\r\nHEAD\t\r\nFinally, to retrieve metadata information, you should use the HEAD method to get the headers. This returns only the header of what would be returned with an associated GET request.\r\n\r\nResponse headers contain some useful information about your API access and the results that are available for your request.\r\n\r\nFor instance, the headers contain your current rate-limit value and the amount of time available until the limit resets. It also contains metrics about the total number of objects found, pagination information, and the total content length.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -24,7 +24,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/account",
               "host": [
@@ -38,23 +41,24 @@
           },
           "response": [
             {
-              "id": "b42f979d-1634-4e4d-b13d-3b0eb1870244",
+              "id": "2d0a4cf5-97e1-46fb-a9ae-7e4d3d94f0bd",
               "name": "Failed to authenticate",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
                 "url": {
                   "raw": "{{base_url}}/account",
                   "host": [
@@ -126,7 +130,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -138,133 +142,24 @@
               "body": "{\"id\": \"unauthorized\", \"message\": \"Unable to authenticate you.\" }"
             },
             {
-              "id": "5e1e2dc0-db3e-4730-8cea-8d60d34485d7",
-              "name": "Failed to authenticate",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer b7d03a6947b217efb6f3ec3bd3504582",
-                    "disabled": false
-                  }
-                ],
-                "body": {},
-                "url": {
-                  "raw": "https://api.digitalocean.com/v2/account",
-                  "protocol": "https",
-                  "host": [
-                    "api",
-                    "digitalocean",
-                    "com"
-                  ],
-                  "path": [
-                    "v2",
-                    "account"
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "CF-RAY",
-                  "value": "443a5fbbd93f5ba5-HEL",
-                  "name": "CF-RAY",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "65",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 01 Aug 2018 18:30:05 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expect-CT",
-                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
-                  "name": "Expect-CT",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Server",
-                  "value": "cloudflare",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Set-Cookie",
-                  "value": "__cfduid=dddc37f9edb69c5c3d2047e5e4060a9fc1533148205; expires=Thu, 01-Aug-19 18:30:05 GMT; path=/; domain=.digitalocean.com; HttpOnly",
-                  "name": "Set-Cookie",
-                  "description": "an HTTP cookie"
-                },
-                {
-                  "key": "X-Gateway",
-                  "value": "Edge-Gateway",
-                  "name": "X-Gateway",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Request-Id",
-                  "value": "7fbf5054-fc6a-4e4b-9f6e-443681d69068",
-                  "name": "X-Request-Id",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [
-                {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
-                  "httpOnly": true,
-                  "domain": "digitalocean.com",
-                  "path": "/",
-                  "secure": false,
-                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
-                  "key": "__cfduid"
-                }
-              ],
-              "body": "{\"id\": \"unauthorized\", \"message\": \"Unable to authenticate you.\" }"
-            },
-            {
-              "id": "b562e820-986b-42e5-a3fa-5608bc81fd08",
+              "id": "13ffb9da-d695-401e-b5b5-ee6be78b97ab",
               "name": "Get User Information",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
                 "url": {
                   "raw": "{{base_url}}/account",
                   "host": [
@@ -402,7 +297,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -412,6 +307,117 @@
                 }
               ],
               "body": "{\n    \"account\": {\n        \"droplet_limit\": 1,\n        \"floating_ip_limit\": 1,\n        \"email\": \"postman-do@gmail.com\",\n        \"uuid\": \"fe87d52a44365d3d8781365d3d8781365d3d8781ed68\",\n        \"email_verified\": true,\n        \"status\": \"active\",\n        \"status_message\": \"\"\n    }\n}"
+            },
+            {
+              "id": "a75ff0b4-9270-4383-916f-4385e28c5225",
+              "name": "Failed to authenticate",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer b7d03a6947b217efb6f3ec3bd3504582"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://api.digitalocean.com/v2/account",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "digitalocean",
+                    "com"
+                  ],
+                  "path": [
+                    "v2",
+                    "account"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443a5fbbd93f5ba5-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 18:30:05 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "__cfduid=dddc37f9edb69c5c3d2047e5e4060a9fc1533148205; expires=Thu, 01-Aug-19 18:30:05 GMT; path=/; domain=.digitalocean.com; HttpOnly",
+                  "name": "Set-Cookie",
+                  "description": "an HTTP cookie"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "7fbf5054-fc6a-4e4b-9f6e-443681d69068",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"id\": \"unauthorized\", \"message\": \"Unable to authenticate you.\" }"
             }
           ]
         }
@@ -457,7 +463,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/domains",
               "host": [
@@ -471,23 +480,24 @@
           },
           "response": [
             {
-              "id": "006e70d7-b1b4-45c9-9b08-07978c8a40cc",
+              "id": "e07198a0-974d-46a7-8333-ae406aa12870",
               "name": "List all Domains",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
                 "url": {
                   "raw": "{{base_url}}/domains",
                   "host": [
@@ -625,7 +635,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -689,7 +699,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/droplets?page={{page}}1&per_page={{per_page}}",
               "host": [
@@ -713,23 +726,24 @@
           },
           "response": [
             {
-              "id": "43ae058b-1817-4206-bf19-d60a3d0d3b5c",
+              "id": "7eaed0fb-f58b-4268-bf90-c26947cc4a0f",
               "name": "No droplets found",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
                 "url": {
                   "raw": "{{base_url}}/droplets?page={{page}}1&per_page={{per_page}}",
                   "host": [
@@ -877,7 +891,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -904,7 +918,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/droplets?tag_name={{tag_name}}",
               "host": [
@@ -924,23 +941,24 @@
           },
           "response": [
             {
-              "id": "1b2642ea-29cf-45f9-a622-e7c3716de44a",
+              "id": "ebbccb53-9aeb-425f-bb05-d2ac4ecc4fa7",
               "name": "Listing Droplets by Tag None",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
                 "url": {
                   "raw": "{{base_url}}/droplets?tag_name={{tag_name}}",
                   "host": [
@@ -1078,7 +1096,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -1111,7 +1129,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/images/{{image_id}}",
               "host": [
@@ -1126,23 +1147,24 @@
           },
           "response": [
             {
-              "id": "d9e8d854-e63a-4e06-8a5a-c09591086f5f",
+              "id": "60d22059-bbe1-413e-bb4e-f11e38ac919f",
               "name": "Retrieve an existing Image by id",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
                 "url": {
                   "raw": "{{base_url}}/images/{{image_id}}",
                   "host": [
@@ -1275,7 +1297,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -1302,7 +1324,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/images/{{image_id}}",
               "host": [
@@ -1337,7 +1362,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/regions",
               "host": [
@@ -1371,7 +1399,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/snapshots?page={{page}}&per_page={{per_page}}",
               "host": [
@@ -1395,23 +1426,24 @@
           },
           "response": [
             {
-              "id": "4294a43a-9cd6-423d-aac5-57e2d03f892a",
+              "id": "a11d9e6c-24d7-4318-a2c0-3f2ab071aec7",
               "name": "List all snapshots",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
                 "url": {
                   "raw": "{{base_url}}/snapshots?page={{page}}&per_page={{per_page}}",
                   "host": [
@@ -1553,7 +1585,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -1580,7 +1612,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/snapshots?page={{page}}&per_page={{per_page}}&resource_type=droplet",
               "host": [
@@ -1622,7 +1657,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/snapshots?page={{page}}&per_page={{per_page}}&resource_type=volume",
               "host": [
@@ -1670,7 +1708,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/sizes",
               "host": [
@@ -1684,23 +1725,24 @@
           },
           "response": [
             {
-              "id": "e1d91f13-49f6-4244-936a-4636677918fb",
+              "id": "18e13caa-74eb-405d-a8fa-5d843bb813fe",
               "name": "List all Sizes",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
                 "url": {
                   "raw": "{{base_url}}/sizes",
                   "host": [
@@ -1838,7 +1880,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -1888,20 +1930,18 @@
           },
           "response": [
             {
-              "id": "da6f1951-7e94-4b1e-a033-6f57d8f4648b",
+              "id": "1820fdd8-1069-4dd2-975e-29178460fd58",
               "name": "Create a new Tag success",
               "originalRequest": {
                 "method": "POST",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
                 "body": {
@@ -2015,7 +2055,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -2042,7 +2082,10 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
               "raw": "{{base_url}}/tags",
               "host": [
@@ -2056,23 +2099,161 @@
           },
           "response": [
             {
-              "id": "56dcfd15-45d1-4f7d-a956-0a30334b4b23",
+              "id": "6335bd41-f662-4f74-a883-4e0774ca4904",
+              "name": "Empty tags",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{base_url}}/tags",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443abfa22ef55b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "42",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:35:33 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4998",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "e39e940a-daa1-430c-b9d5-47aa678eb4ae",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.010729",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"tags\":[],\"links\":{},\"meta\":{\"total\":0}}\n"
+            },
+            {
+              "id": "08989f0a-f9dd-47f4-925b-7252e59c7ee7",
               "name": "List all Tags",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
+                    "value": "application/json"
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
-                "body": {},
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
                 "url": {
                   "raw": "{{base_url}}/tags",
                   "host": [
@@ -2186,7 +2367,7 @@
               ],
               "cookie": [
                 {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
+                  "expires": "Invalid Date",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
@@ -2196,142 +2377,6 @@
                 }
               ],
               "body": "{\"tags\":[{\"name\":\"postman-do-tag\",\"resources\":{\"droplets\":{\"count\":0,\"last_tagged\":null}}}],\"links\":{},\"meta\":{\"total\":1}}\n"
-            },
-            {
-              "id": "30688150-7d5b-47eb-8736-454712c4f026",
-              "name": "Empty tags",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "disabled": false
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}",
-                    "disabled": false
-                  }
-                ],
-                "body": {},
-                "url": {
-                  "raw": "{{base_url}}/tags",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "tags"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "CF-RAY",
-                  "value": "443abfa22ef55b99-HEL",
-                  "name": "CF-RAY",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "max-age=0, private, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "42",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 01 Aug 2018 19:35:33 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expect-CT",
-                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
-                  "name": "Expect-CT",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Limit",
-                  "value": "5000",
-                  "name": "Ratelimit-Limit",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Remaining",
-                  "value": "4998",
-                  "name": "Ratelimit-Remaining",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Reset",
-                  "value": "1533152110",
-                  "name": "Ratelimit-Reset",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Server",
-                  "value": "cloudflare",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "X-Gateway",
-                  "value": "Edge-Gateway",
-                  "name": "X-Gateway",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Request-Id",
-                  "value": "e39e940a-daa1-430c-b9d5-47aa678eb4ae",
-                  "name": "X-Request-Id",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Response-From",
-                  "value": "service",
-                  "name": "X-Response-From",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Runtime",
-                  "value": "0.010729",
-                  "name": "X-Runtime",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [
-                {
-                  "expires": "Thu Aug 01 2019 21:30:05 GMT+0300 (FLE Daylight Time)",
-                  "httpOnly": true,
-                  "domain": "digitalocean.com",
-                  "path": "/",
-                  "secure": false,
-                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
-                  "key": "__cfduid"
-                }
-              ],
-              "body": "{\"tags\":[],\"links\":{},\"meta\":{\"total\":0}}\n"
             }
           ]
         },
@@ -2369,6 +2414,941 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "SSH Keys",
+      "description": "DigitalOcean allows you to add SSH public keys to the interface so that you can embed your public key into a Droplet at the time of creation. Only the public key is required to take advantage of this functionality.\r\n\r\nName\tType\tDescription\r\nid\tinteger\tThis is a unique identification number for the key. This can be used to reference a specific SSH key when you wish to embed a key into a Droplet.\r\nfingerprint\tstring\tThis attribute contains the fingerprint value that is generated from the public key. This is a unique identifier that will differentiate it from other keys using a format that SSH recognizes.\r\npublic_key\tstring\tThis attribute contains the entire public key string that was uploaded. This is what is embedded into the root user's authorized_keys file if you choose to include this SSH key during Droplet creation.\r\nname\tstring\tThis is the human-readable display name for the given SSH key. This is used to easily identify the SSH keys when they are displayed.",
+      "item": [
+        {
+          "name": "List all Keys",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/account/keys",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account",
+                "keys"
+              ]
+            },
+            "description": "To list all of the keys in your account, send a GET request to /v2/account/keys.\r\n\r\nThe response will be a JSON object with a key set to _ssh_keys_. "
+          },
+          "response": [
+            {
+              "id": "085df758-d153-402c-86ff-905b574a5280",
+              "name": "List all Keys fail",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/account/keys",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "account",
+                    "keys"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "44441a3e69195ae5-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 02 Aug 2018 22:50:17 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "c277cb4f-a768-4b54-823b-4be69bb46731",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"id\": \"unauthorized\", \"message\": \"Unable to authenticate you.\" }"
+            },
+            {
+              "id": "432702d8-7976-4740-a664-a4252eea13dd",
+              "name": "List all Keys",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/account/keys",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "account",
+                    "keys"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "44441d4c5bfb5ae5-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 02 Aug 2018 22:52:22 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"ddb178f20919cbd8a05e0413efde3322\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4999",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533250342",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "64ef5fa7-8fa0-40c0-8c47-940f0f65f390",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.041174",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\n    \"ssh_keys\": [\n        {\n            \"id\": 4510660,\n            \"fingerprint\": \"55:99:79:f2:1a\",\n            \"public_key\": \"ssh-rsa AAAAB3NzaC1 Dawit@domain\",\n            \"name\": \"DN-Lenovo\"\n        },\n        {\n            \"id\": 4566889,\n            \"fingerprint\": \"fe:d3:67:0e:f2:7a:\",\n            \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAA dawitnida@Pro.local\",\n            \"name\": \"DMacs\"\n        },\n        {\n            \"id\": 12068387,\n            \"fingerprint\": \"c2:13:28:da:5d:16:8b:0c:2a:04\",\n            \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQAB dawitnida@Pro.local\",\n            \"name\": \"tutorial_key\"\n        }\n    ],\n    \"links\": {},\n    \"meta\": {\n        \"total\": 3\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create a new Key",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"SSH Public Key\",\r\n  \"public_key\": \"{{ssh_pub_demo}}\"\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/account/keys",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account",
+                "keys"
+              ]
+            },
+            "description": "To add a new SSH public key to your DigitalOcean account, send a POST request to /v2/account/keys. Set the \"name\" attribute to the name you wish to use and the \"public_key\" attribute to a string of the full public key you are adding.\n\nThe response body will be a JSON object with a key set to ssh_key. The value will be the complete generated key object. This will have the standard key attributes:\n\nName\tType\tDescription\nid\tinteger\tThis is a unique identification number for the key. This can be used to reference a specific SSH key when you wish to embed a key into a Droplet.\nfingerprint\tstring\tThis attribute contains the fingerprint value that is generated from the public key. This is a unique identifier that will differentiate it from other keys using a format that SSH recognizes.\npublic_key\tstring\tThis attribute contains the entire public key string that was uploaded. This is what is embedded into the root user's authorized_keys file if you choose to include this SSH key during Droplet creation.\nname\tstring\tThis is the human-readable display name for the given SSH key. This is used to easily identify the SSH keys when they are displayed."
+          },
+          "response": [
+            {
+              "id": "221e45f9-a977-4960-b15a-47df465c2256",
+              "name": "Create a new Key",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"SSH Public Key\",\r\n  \"public_key\": \"{{ssh_pub_demo}}\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/account/keys",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "account",
+                    "keys"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "444436a5ebde5ae5-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "263",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 02 Aug 2018 23:09:40 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "\"0678ad1b5dcd9894c62a5066df3dfc9c\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4993",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533250342",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "7ab54578-00db-440c-ade1-68eb17026caa",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.092877",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"ssh_key\":{\"id\":22162952,\"fingerprint\":\"3b:16:bf:e4:8b:00:8b:b8:59:8c:a9:d3:f0:19:45:fa\",\"public_key\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAQQDDHr/jh2Jy4yALcK4JyWbVkPRaWmhck3IgCoeOO3z1e2dBowLh64QAM+Qb72pxekALga2oi4GvT+TlWNhzPH4V example\",\"name\":\"SSH Public Key\"}}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve an existing Key",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/account/keys/{{ssh_key_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account",
+                "keys",
+                "{{ssh_key_id}}"
+              ]
+            },
+            "description": "To show information about a key, send a GET request to /v2/account/keys/$KEY_ID or /v2/account/keys/$KEY_FINGERPRINT.\r\n\r\nThe response will be a JSON object with a key called _ssh_key_. "
+          },
+          "response": [
+            {
+              "id": "b35f8e61-05a3-4d47-a923-f4314799df1a",
+              "name": "Retrieve an existing Key",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/account/keys/{{ssh_key_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "account",
+                    "keys",
+                    "{{ssh_key_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "444435355cbf5ae5-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 02 Aug 2018 23:08:41 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"ea244cae87792f4dc9bf8e35fd113d10\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4994",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533250342",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "450cc0ed-d2a7-4cb0-a520-6fc5a5203674",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.086320",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\n    \"ssh_key\": {\n        \"id\": 1206387,\n        \"fingerprint\": \"c2:13:28:66:8b:0c:2a:04\",\n        \"public_key\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADA4 dawitnida@4-Pro.local\",\n        \"name\": \"Demo\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update a Key",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Renamed SSH Key\"\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/account/keys/{{ssh_key_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account",
+                "keys",
+                "{{ssh_key_id}}"
+              ]
+            },
+            "description": "To update the name of an SSH key, send a PUT request to either /v2/account/keys/$SSH_KEY_ID or /v2/account/keys/$SSH_KEY_FINGERPRINT. Set the \"name\" attribute to the new name you want to use."
+          },
+          "response": [
+            {
+              "id": "34b6643f-09d5-4bc2-882e-e8eb786efb98",
+              "name": "Update a Key",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Demo\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/account/keys/{{ssh_key_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "account",
+                    "keys",
+                    "{{ssh_key_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "44442f9b8fad5ae5-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 02 Aug 2018 23:04:52 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"ea244cae87792f4dc9bf8e35fd113d10\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4997",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533250342",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "478b2892-c46d-4504-b884-0a7a9ed1a969",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.063180",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\n    \"ssh_key\": {\n        \"id\": 12068387,\n        \"fingerprint\": \"c2:13:28:da:5d:2a:04\",\n        \"public_key\": \"ssh-rsa AAAAB3N dawitnida@Pro.local\",\n        \"name\": \"Demo\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Destroy a Key",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/account/keys/{{ssh_key_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "account",
+                "keys",
+                "{{ssh_key_id}}"
+              ]
+            },
+            "description": "To destroy a public SSH key that you have in your account, send a DELETE request to /v2/account/keys/$KEY_ID or /v2/account/keys/$KEY_FINGERPRINT.\r\n\r\nA 204 status will be returned, indicating that the action was successful and that the response body is empty."
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [
@@ -2395,51 +3375,65 @@
   ],
   "variable": [
     {
-      "id": "0972e405-88c4-4334-a450-870e090d80be",
+      "id": "196b6e2e-c340-447d-a204-0da2d3dcfa4e",
       "key": "name",
       "value": "digitalocean.fi",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8ff7dc36-3c8e-4ab8-afe6-bc6e388667de",
+      "id": "525a7324-29c1-4604-b3d3-511762e71f38",
       "key": "region",
       "value": "nyc3",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ca4cf85a-77f3-407d-9c2a-db94ca66dcca",
+      "id": "279a4801-a0cf-405f-a888-7820350b7b34",
       "key": "size",
       "value": "s-1vcpu-1gb",
       "type": "string",
       "description": ""
     },
     {
-      "id": "111d9ebf-7b60-4104-8752-694992c2f46a",
+      "id": "6171caec-c0f8-4755-99b9-5d892bf0709e",
       "key": "image",
       "value": "ubuntu-16-04-x64",
       "type": "string",
       "description": ""
     },
     {
-      "id": "67fe3eb2-42b8-48e9-a204-c506f44ce525",
+      "id": "723b2b25-bb25-4bf8-aec1-c276f064554a",
       "key": "resource_id",
       "value": "523311244",
       "type": "string",
       "description": ""
     },
     {
-      "id": "d48a2cff-971b-4bbd-872d-b2f036cf9221",
+      "id": "3c2a0774-7a18-4c42-a3b6-1be7ff9eb786",
       "key": "tag_name",
       "value": "postman-do-tag",
       "type": "string",
       "description": ""
     },
     {
-      "id": "daf59625-714a-429c-ac8d-bc4304902a66",
+      "id": "0b773666-e28a-4f52-bad8-286a76b9e5b6",
       "key": "image_id",
       "value": "63261821",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "9ed0e8f1-538e-4d2f-88b1-42dc7386ae83",
+      "key": "ssh_pub_demo",
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAQQDDHr/jh2Jy4yALcK4JyWbVkPRaWmhck3IgCoeOO3z1e2dBowLh64QAM+Qb72pxekALga2oi4GvT+TlWNhzPH4V example",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "1459b90e-ddc0-4b0f-83bc-6a2b92b937e2",
+      "key": "ssh_key_id",
+      "value": "22162952",
       "type": "string",
       "description": ""
     }
