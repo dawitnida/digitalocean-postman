@@ -36,11 +36,16 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - region
 
 ## TODOs
-- Actions
-- Droplet Actions
-- Floating IPs
-- Firewalls
-- Load Balancers & more
+- [x] Accounts
+- [x] Droplets
+- [ ] Actions
+- [ ] Droplet Actions
+- [ ] Floating IPs
+- [ ] Firewalls
+- [ ] Load Balancers
+- [x] Regions
+- [x] Sizes
+- [x] SSH-Keys
 
 ## Author
 [Dawit Nida](https://github.com/dawitnida)
