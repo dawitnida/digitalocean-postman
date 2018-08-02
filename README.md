@@ -1,3 +1,6 @@
+![DigitalOcean API Version](https://img.shields.io/badge/digitalocean-api--v2-green.svg)
+![Postman Version](https://img.shields.io/badge/postman-v6.2.3-green.svg)
+
 [DigitalOcean][do-api]-Postman Collection
 ========================================
 Postman Collection for [DigitalOcean API][do-api]
