@@ -7,10 +7,11 @@
   },
   "item": [
     {
+      "_postman_id": "68371052-997b-4842-9cc5-98ca8a7e5388",
       "name": "Account",
-      "description": "Name\t\t\t\tType\t\tDescription\r\ndroplet_limit\t\tinteger\t\tThe total number of droplets the user may have\r\nfloating_ip_limit\tinteger\t\tThe total number of floating IPs the user may have\r\nemail\t\t\t\tstring\t\tThe email the user has registered for Digital Ocean with\r\nuuid\t\t\t\tstring (alphanumeric)\tThe universal identifier for this user\r\nemail_verified\t\tboolean\t\tIf true, the user has verified their account via email. False otherwise.\r\nstatus\t\t\t\tstring\t\tThis value is one of \"active\", \"warning\" or \"locked\".\r\nstatus_message\t\tstring\t\tA human-readable message giving more details about the status of the account.\r\n",
       "item": [
         {
+          "_postman_id": "4c8e801d-997e-43bf-99bc-f9f9459f7f7e",
           "name": "Get User Information",
           "request": {
             "method": "GET",
@@ -41,7 +42,7 @@
           },
           "response": [
             {
-              "id": "2d0a4cf5-97e1-46fb-a9ae-7e4d3d94f0bd",
+              "id": "93cb9de4-7383-4a7a-95b2-ef1ef2f56a19",
               "name": "Failed to authenticate",
               "originalRequest": {
                 "method": "GET",
@@ -142,7 +143,7 @@
               "body": "{\"id\": \"unauthorized\", \"message\": \"Unable to authenticate you.\" }"
             },
             {
-              "id": "13ffb9da-d695-401e-b5b5-ee6be78b97ab",
+              "id": "9e251d0d-fbd0-46d6-ae24-b069f9b615e8",
               "name": "Get User Information",
               "originalRequest": {
                 "method": "GET",
@@ -309,7 +310,7 @@
               "body": "{\n    \"account\": {\n        \"droplet_limit\": 1,\n        \"floating_ip_limit\": 1,\n        \"email\": \"postman-do@gmail.com\",\n        \"uuid\": \"fe87d52a44365d3d8781365d3d8781365d3d8781ed68\",\n        \"email_verified\": true,\n        \"status\": \"active\",\n        \"status_message\": \"\"\n    }\n}"
             },
             {
-              "id": "a75ff0b4-9270-4383-916f-4385e28c5225",
+              "id": "40bd4e5a-4a47-4ce4-980d-85afadbcee1f",
               "name": "Failed to authenticate",
               "originalRequest": {
                 "method": "GET",
@@ -422,6 +423,7 @@
           ]
         }
       ],
+      "description": "Name\t\t\t\tType\t\tDescription\r\ndroplet_limit\t\tinteger\t\tThe total number of droplets the user may have\r\nfloating_ip_limit\tinteger\t\tThe total number of floating IPs the user may have\r\nemail\t\t\t\tstring\t\tThe email the user has registered for Digital Ocean with\r\nuuid\t\t\t\tstring (alphanumeric)\tThe universal identifier for this user\r\nemail_verified\t\tboolean\t\tIf true, the user has verified their account via email. False otherwise.\r\nstatus\t\t\t\tstring\t\tThis value is one of \"active\", \"warning\" or \"locked\".\r\nstatus_message\t\tstring\t\tA human-readable message giving more details about the status of the account.\r\n",
       "event": [
         {
           "listen": "prerequest",
@@ -446,10 +448,530 @@
       ]
     },
     {
-      "name": "Domain",
-      "description": "Domain resources are domain names that you have purchased from a domain name registrar that you are managing through the DigitalOcean DNS interface.\r\n\r\nThis resource establishes top-level control over each domain. Actions that affect individual domain records should be taken on the Domain Records resource.\r\n\r\nName\tType\tDescription\r\nname\tstring\tThe name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.\r\nttl\tinteger\tThis value is the time to live for the records on this domain, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.\r\nzone_file\tstring\tThis attribute contains the complete contents of the zone file for the selected domain. Individual domain record resources should be used to get more granular control over records. However, this attribute can also be used to get information about the SOA record, which is created automatically and is not accessible as an individual record resource.",
+      "_postman_id": "0a439f82-9ce0-4c16-a2df-d30210af0055",
+      "name": "Certificates",
       "item": [
         {
+          "_postman_id": "8735ae13-a979-40ee-a50d-abffcba1a4cc",
+          "name": "List all certificates",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/certificates",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "certificates"
+              ]
+            },
+            "description": "To list all of the certificates available on your account, send a GET request to /v2/certificates.\r\n\r\nThe result will be a JSON object with a certificates key. This will be set to an array of certificate objects, each of which will contain the standard certificate attributes:"
+          },
+          "response": [
+            {
+              "id": "4195ffc3-5277-4e71-af7a-4f1da24f0622",
+              "name": "Empty certificates",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/certificates",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "certificates"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "4484be8739f45b33-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 10 Aug 2018 19:07:15 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4999",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533928034",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "43ce9279-b7ab-4dde-bc57-5d88c111da5a",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"certificates\":[],\"links\":{},\"meta\":{\"total\":0}}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "2edf9357-6f0d-4371-a349-7533fadca800",
+          "name": "Retrieve an existing certificate",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/certificates/{{certificate_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "certificates",
+                "{{certificate_id}}"
+              ]
+            },
+            "description": "To show information about an existing certificate, send a GET request to /v2/certificates/$CERTIFICATE_ID.\r\n\r\nThe response will be a JSON object with a certificate key."
+          },
+          "response": [
+            {
+              "id": "f2765e40-3813-4678-af10-59cf41167309",
+              "name": "Certificate not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/certificates/892071a0-bb95-49bc-8021-3afd67a210bf",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "certificates",
+                    "892071a0-bb95-49bc-8021-3afd67a210bf"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "4484c2cd1c005b33-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 10 Aug 2018 19:10:10 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4997",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533928034",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "1a015cc7-7477-4b8a-a4fa-58120b49a03b",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"id\":\"not_found\",\"message\":\"Certificate not found\",\"request_id\":\"1a015cc7-7477-4b8a-a4fa-58120b49a03b\"}\n"
+            }
+          ]
+        },
+        {
+          "_postman_id": "a3f59bc0-6c69-48bb-96c4-1147c16b2cac",
+          "name": "Create a new certificate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"web-cert-01\",\r\n  \"type\": \"custom\",\r\n  \"private_key\": \"(</path/to/privkey1.pem)\",\r\n  \"leaf_certificate\": \"(</path/to/cert1.pem)\",\r\n  \"certificate_chain\": \"(</path/to/fullchain1.pem)\"\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/certificates",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "certificates"
+              ]
+            },
+            "description": "To upload or create a new SSL certificate, send a POST request to /v2/certificates. When uploading a user-generated certificate, the private_key, leaf_certificate, and optionally the certificate_chain attributes should be provided. The type should be set to \"custom\". When generating a certificate using Let's Encrypt, the dns_names attribute must be provided, and the type should be set to \"lets_encrypt\"."
+          },
+          "response": [
+            {
+              "id": "195499a7-bb53-42e5-9145-cf363ee8d574",
+              "name": "Invalid certificate data tls",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"web-cert-01\",\r\n  \"type\": \"custom\",\r\n  \"private_key\": \"(</path/to/privkey1.pem)\",\r\n  \"leaf_certificate\": \"(</path/to/cert1.pem)\",\r\n  \"certificate_chain\": \"(</path/to/fullchain1.pem)\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/certificates",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "certificates"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "4484c0215bf45b33-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "173",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 10 Aug 2018 19:08:20 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4998",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533928034",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "eb8cb889-04a8-4c94-80b4-f4b9d656254c",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"id\":\"unprocessable_entity\",\"message\":\"Invalid certificate data tls: failed to find any PEM data in certificate input\",\"request_id\":\"eb8cb889-04a8-4c94-80b4-f4b9d656254c\"}\n"
+            }
+          ]
+        },
+        {
+          "_postman_id": "e9acab78-cc24-4839-b1ca-87050a103703",
+          "name": "Delete a certificate",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/certificates/{{certificate_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "certificates",
+                "{{certificate_id}}"
+              ]
+            },
+            "description": "To delete a specific certificate, send a DELETE request to /v2/certificates/$CERTIFICATE_ID.\r\n\r\nA status of 204 will be given. This indicates that the request was processed successfully, but that no response body is needed."
+          },
+          "response": []
+        }
+      ],
+      "description": "In order to perform SSL termination on Load Balancers, DigitalOcean offers two types of SSL certificate management:\r\n\r\nCustom: User-generated certificates may be uploaded to DigitalOcean where they will be placed in a fully encrypted and isolated storage system.\r\nLet's Encrypt: Certificates may be automatically generated by DigitalOcean utilizing an integration with Let's Encrypt, the free and open certificate authority. These certificates will also be automatically renewed as required.\r\nName\tType\tDescription\r\nid\tstring\tA unique ID that can be used to identify and reference a certificate.\r\nname\tstring\tA unique human-readable name referring to a certificate.\r\nnot_after\tstring\tA time value given in ISO8601 combined date and time format that represents the certificate's expiration date.\r\nsha1_fingerprint\tstring\tA unique identifier generated from the SHA-1 fingerprint of the certificate.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the certificate was created.\r\ndns_names\tarray of strings\tAn array of fully qualified domain names (FQDNs) for which the certificate was issued.\r\nstate\tstring\tA string representing the current state of the certificate. It may be \"pending\", \"verified\", or \"error\".\r\ntype\tstring\tA string representing the type of the certificate. The value will be \"custom\" for a user-uploaded certificate or \"lets_encrypt\" for one automatically generated with Let's Encrypt."
+    },
+    {
+      "_postman_id": "c600a576-1895-4f4e-a966-592412e9dfd6",
+      "name": "Domain",
+      "item": [
+        {
+          "_postman_id": "a17439d5-b981-4c24-8e47-91868c49c45e",
           "name": "List all Domains",
           "request": {
             "method": "GET",
@@ -480,7 +1002,7 @@
           },
           "response": [
             {
-              "id": "e07198a0-974d-46a7-8333-ae406aa12870",
+              "id": "2245f4c6-1443-49d7-b86e-09afbc81b259",
               "name": "List all Domains",
               "originalRequest": {
                 "method": "GET",
@@ -648,13 +1170,15 @@
             }
           ]
         }
-      ]
+      ],
+      "description": "Domain resources are domain names that you have purchased from a domain name registrar that you are managing through the DigitalOcean DNS interface.\r\n\r\nThis resource establishes top-level control over each domain. Actions that affect individual domain records should be taken on the Domain Records resource.\r\n\r\nName\tType\tDescription\r\nname\tstring\tThe name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, example.com is a valid domain name.\r\nttl\tinteger\tThis value is the time to live for the records on this domain, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.\r\nzone_file\tstring\tThis attribute contains the complete contents of the zone file for the selected domain. Individual domain record resources should be used to get more granular control over records. However, this attribute can also be used to get information about the SOA record, which is created automatically and is not accessible as an individual record resource."
     },
     {
+      "_postman_id": "1b533b85-169c-4876-af97-cbe3e47a7bd4",
       "name": "Droplets",
-      "description": "A Droplet is a DigitalOcean virtual machine. By sending requests to the Droplet endpoint, you can list, create, or delete Droplets.\r\n\r\nSome of the attributes will have an object value. The region and image objects will all contain the standard attributes of their associated types. Find more information about each of these objects in their respective sections.\r\n\r\nName\tType\tDescription\r\nid\tinteger\tA unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.\r\nname\tstring\tThe human-readable name set for the Droplet instance.\r\nmemory\tinteger\tMemory of the Droplet in megabytes.\r\nvcpus\tinteger\tThe number of virtual CPUs.\r\ndisk\tinteger\tThe size of the Droplet's disk in gigabytes.\r\nlocked\tboolean\tA boolean value indicating whether the Droplet has been locked, preventing actions by users.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the Droplet was created.\r\nstatus\tstring\tA status string indicating the state of the Droplet instance. This may be \"new\", \"active\", \"off\", or \"archive\".\r\nbackup_ids\tarray\tAn array of backup IDs of any backups that have been taken of the Droplet instance. Droplet backups are enabled at the time of the instance creation.\r\nsnapshot_ids\tarray\tAn array of snapshot IDs of any snapshots created from the Droplet instance.\r\nfeatures\tarray\tAn array of features enabled on this Droplet.\r\nregion\tobject\tThe region that the Droplet instance is deployed in. When setting a region, the value should be the slug identifier for the region. When you query a Droplet, the entire region object will be returned.\r\nimage\tobject\tThe base image used to create the Droplet instance. When setting an image, the value is set to the image id or slug. When querying the Droplet, the entire image object will be returned.\r\nsize\tobject\tThe current size object describing the Droplet. When setting a size, the value is set to the size slug. When querying the Droplet, the entire size object will be returned. Note that the disk volume of a Droplet may not match the size's disk due to Droplet resize actions. The disk attribute on the Droplet should always be referenced.\r\nsize_slug\tstring\tThe unique slug identifier for the size of this Droplet.\r\nnetworks\tobject\tThe details of the network that are configured for the Droplet instance. This is an object that contains keys for IPv4 and IPv6. The value of each of these is an array that contains objects describing an individual IP resource allocated to the Droplet. These will define attributes like the IP address, netmask, and gateway of the specific network depending on the type of network it is.\r\nkernel\tnullable object\tThe current kernel. This will initially be set to the kernel of the base image when the Droplet is created.\r\nnext_backup_window\tnullable object\tThe details of the Droplet's backups feature, if backups are configured for the Droplet. This object contains keys for the start and end times of the window during which the backup will start.\r\ntags\tarray\tAn array of Tags the Droplet has been tagged with.\r\nvolume_ids\tarray\tA flat array including the unique identifier for each Block Storage volume attached to the Droplet.",
       "item": [
         {
+          "_postman_id": "88e93b77-55ce-4130-9a74-e7cd45da2da1",
           "name": "Create a new Droplet",
           "request": {
             "method": "POST",
@@ -686,6 +1210,7 @@
           "response": []
         },
         {
+          "_postman_id": "a808cf99-d402-4edb-b513-cab6ccb9e027",
           "name": "List All Droplets",
           "request": {
             "method": "GET",
@@ -726,7 +1251,7 @@
           },
           "response": [
             {
-              "id": "7eaed0fb-f58b-4268-bf90-c26947cc4a0f",
+              "id": "109a231c-a4f9-4705-8b7d-97a42e678952",
               "name": "No droplets found",
               "originalRequest": {
                 "method": "GET",
@@ -905,6 +1430,7 @@
           ]
         },
         {
+          "_postman_id": "ece00d33-ec43-4acd-9b03-97303643f81c",
           "name": "Listing Droplets by Tag",
           "request": {
             "method": "GET",
@@ -941,7 +1467,7 @@
           },
           "response": [
             {
-              "id": "ebbccb53-9aeb-425f-bb05-d2ac4ecc4fa7",
+              "id": "5b352cff-c42b-46fb-a4bb-661cacd1786f",
               "name": "Listing Droplets by Tag None",
               "originalRequest": {
                 "method": "GET",
@@ -1109,13 +1635,15 @@
             }
           ]
         }
-      ]
+      ],
+      "description": "A Droplet is a DigitalOcean virtual machine. By sending requests to the Droplet endpoint, you can list, create, or delete Droplets.\r\n\r\nSome of the attributes will have an object value. The region and image objects will all contain the standard attributes of their associated types. Find more information about each of these objects in their respective sections.\r\n\r\nName\tType\tDescription\r\nid\tinteger\tA unique identifier for each Droplet instance. This is automatically generated upon Droplet creation.\r\nname\tstring\tThe human-readable name set for the Droplet instance.\r\nmemory\tinteger\tMemory of the Droplet in megabytes.\r\nvcpus\tinteger\tThe number of virtual CPUs.\r\ndisk\tinteger\tThe size of the Droplet's disk in gigabytes.\r\nlocked\tboolean\tA boolean value indicating whether the Droplet has been locked, preventing actions by users.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the Droplet was created.\r\nstatus\tstring\tA status string indicating the state of the Droplet instance. This may be \"new\", \"active\", \"off\", or \"archive\".\r\nbackup_ids\tarray\tAn array of backup IDs of any backups that have been taken of the Droplet instance. Droplet backups are enabled at the time of the instance creation.\r\nsnapshot_ids\tarray\tAn array of snapshot IDs of any snapshots created from the Droplet instance.\r\nfeatures\tarray\tAn array of features enabled on this Droplet.\r\nregion\tobject\tThe region that the Droplet instance is deployed in. When setting a region, the value should be the slug identifier for the region. When you query a Droplet, the entire region object will be returned.\r\nimage\tobject\tThe base image used to create the Droplet instance. When setting an image, the value is set to the image id or slug. When querying the Droplet, the entire image object will be returned.\r\nsize\tobject\tThe current size object describing the Droplet. When setting a size, the value is set to the size slug. When querying the Droplet, the entire size object will be returned. Note that the disk volume of a Droplet may not match the size's disk due to Droplet resize actions. The disk attribute on the Droplet should always be referenced.\r\nsize_slug\tstring\tThe unique slug identifier for the size of this Droplet.\r\nnetworks\tobject\tThe details of the network that are configured for the Droplet instance. This is an object that contains keys for IPv4 and IPv6. The value of each of these is an array that contains objects describing an individual IP resource allocated to the Droplet. These will define attributes like the IP address, netmask, and gateway of the specific network depending on the type of network it is.\r\nkernel\tnullable object\tThe current kernel. This will initially be set to the kernel of the base image when the Droplet is created.\r\nnext_backup_window\tnullable object\tThe details of the Droplet's backups feature, if backups are configured for the Droplet. This object contains keys for the start and end times of the window during which the backup will start.\r\ntags\tarray\tAn array of Tags the Droplet has been tagged with.\r\nvolume_ids\tarray\tA flat array including the unique identifier for each Block Storage volume attached to the Droplet."
     },
     {
+      "_postman_id": "af41c90a-b8b8-4316-a442-a98e929f62e9",
       "name": "Images",
-      "description": "Images in DigitalOcean may refer to one of a few different kinds of objects.\r\n\r\nAn image may refer to a snapshot that has been taken of a Droplet instance. It may also mean an image representing an automatic backup of a Droplet. The third category that it can represent is a public Linux distribution or application image that is used as a base to create Droplets.\r\n\r\nTo interact with images, you will generally send requests to the images endpoint at /v2/images.\r\n\r\nName\tType\tDescription\r\nid\tinteger\tA unique number that can be used to identify and reference a specific image.\r\nname\tstring\tThe display name that has been given to an image. This is what is shown in the control panel and is generally a descriptive title for the image in question.\r\ntype\tstring\tThe kind of image, describing the duration of how long the image is stored. This is either \"snapshot\" or \"backup\".\r\ndistribution\tstring\tThis attribute describes the base distribution used for this image.\r\nslug\tnullable string\tA uniquely identifying string that is associated with each of the DigitalOcean-provided public images. These can be used to reference a public image as an alternative to the numeric id.\r\npublic\tboolean\tThis is a boolean value that indicates whether the image in question is public or not. An image that is public is available to all accounts. A non-public image is only accessible from your account.\r\nregions\tarray\tThis attribute is an array of the regions that the image is available in. The regions are represented by their identifying slug values.\r\nmin_disk_size\tinteger\tThe minimum 'disk' required for a size to use this image.\r\nsize_gigabytes\tinteger\tThe size of the image in gigabytes.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the Image was created.",
       "item": [
         {
+          "_postman_id": "b35b159c-1f5d-4488-a5c3-933271b49bf6",
           "name": "Retrieve an existing Image by id",
           "request": {
             "method": "GET",
@@ -1147,7 +1675,7 @@
           },
           "response": [
             {
-              "id": "60d22059-bbe1-413e-bb4e-f11e38ac919f",
+              "id": "7b8720d9-7b53-46ac-9169-7c195faed28b",
               "name": "Retrieve an existing Image by id",
               "originalRequest": {
                 "method": "GET",
@@ -1311,6 +1839,7 @@
           ]
         },
         {
+          "_postman_id": "8453456c-9f16-458d-853a-c9e1e24e4604",
           "name": "Delete an Image",
           "request": {
             "method": "DELETE",
@@ -1342,13 +1871,15 @@
           },
           "response": []
         }
-      ]
+      ],
+      "description": "Images in DigitalOcean may refer to one of a few different kinds of objects.\r\n\r\nAn image may refer to a snapshot that has been taken of a Droplet instance. It may also mean an image representing an automatic backup of a Droplet. The third category that it can represent is a public Linux distribution or application image that is used as a base to create Droplets.\r\n\r\nTo interact with images, you will generally send requests to the images endpoint at /v2/images.\r\n\r\nName\tType\tDescription\r\nid\tinteger\tA unique number that can be used to identify and reference a specific image.\r\nname\tstring\tThe display name that has been given to an image. This is what is shown in the control panel and is generally a descriptive title for the image in question.\r\ntype\tstring\tThe kind of image, describing the duration of how long the image is stored. This is either \"snapshot\" or \"backup\".\r\ndistribution\tstring\tThis attribute describes the base distribution used for this image.\r\nslug\tnullable string\tA uniquely identifying string that is associated with each of the DigitalOcean-provided public images. These can be used to reference a public image as an alternative to the numeric id.\r\npublic\tboolean\tThis is a boolean value that indicates whether the image in question is public or not. An image that is public is available to all accounts. A non-public image is only accessible from your account.\r\nregions\tarray\tThis attribute is an array of the regions that the image is available in. The regions are represented by their identifying slug values.\r\nmin_disk_size\tinteger\tThe minimum 'disk' required for a size to use this image.\r\nsize_gigabytes\tinteger\tThe size of the image in gigabytes.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the Image was created."
     },
     {
+      "_postman_id": "2e41d53e-26fe-4087-aaa1-b800cc62cd41",
       "name": "Regions",
-      "description": "A region in DigitalOcean represents a datacenter where Droplets can be deployed and images can be transferred.\r\n\r\nEach region represents a specific datacenter in a geographic location. Some geographical locations may have multiple \"regions\" available. This means that there are multiple datacenters available within that area.\r\n\r\nName\t\tType\tDescription\r\nslug\t\tstring\tA human-readable string that is used as a unique identifier for each region.\r\nname\t\tstring\tThe display name of the region. This will be a full name that is used in the control panel and other interfaces.\r\nsizes\t\tarray\tThis attribute is set to an array which contains the identifying slugs for the sizes available in this region.\r\navailable\tboolean\tThis is a boolean value that represents whether new Droplets can be created in this region.\r\nfeatures\tarray\tThis attribute is set to an array which contains features available in this region",
       "item": [
         {
+          "_postman_id": "2709fc5c-72ce-4bb3-9db9-1936a09fb5fb",
           "name": "List all Regions",
           "request": {
             "method": "GET",
@@ -1379,13 +1910,15 @@
           },
           "response": []
         }
-      ]
+      ],
+      "description": "A region in DigitalOcean represents a datacenter where Droplets can be deployed and images can be transferred.\r\n\r\nEach region represents a specific datacenter in a geographic location. Some geographical locations may have multiple \"regions\" available. This means that there are multiple datacenters available within that area.\r\n\r\nName\t\tType\tDescription\r\nslug\t\tstring\tA human-readable string that is used as a unique identifier for each region.\r\nname\t\tstring\tThe display name of the region. This will be a full name that is used in the control panel and other interfaces.\r\nsizes\t\tarray\tThis attribute is set to an array which contains the identifying slugs for the sizes available in this region.\r\navailable\tboolean\tThis is a boolean value that represents whether new Droplets can be created in this region.\r\nfeatures\tarray\tThis attribute is set to an array which contains features available in this region"
     },
     {
+      "_postman_id": "e3413c04-da17-4e3a-b181-6b5b21607527",
       "name": "Snapshots",
-      "description": "Snapshots are saved instances of a Droplet or a volume, which is reflected in the resource_type attribute. In order to avoid problems with compressing filesystems, each defines a min_disk_size attribute which is the minimum size of the Droplet or volume disk when creating a new resource from the saved snapshot.\r\n\r\nTo interact with snapshots, you will generally send requests to the snapshots endpoint at /v2/snapshots.\r\n\r\nName\tType\tDescription\r\nid\tstring\tThe unique identifier for the snapshot.\r\nname\tstring\tA human-readable name for the snapshot.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the snapshot was created.\r\nregions\tarray\tAn array of the regions that the image is available in. The regions are represented by their identifying slug values.\r\nresource_id\tstring\tA unique identifier for the resource that the action is associated with.\r\nresource_type\tstring\tThe type of resource that the action is associated with.\r\nmin_disk_size\tinteger\tThe minimum size in GB required for a volume or Droplet to use this snapshot.\r\nsize_gigabytes\tinteger\tThe billable size of the snapshot in gigabytes.",
       "item": [
         {
+          "_postman_id": "a364b820-cb40-4f90-88df-305c91129706",
           "name": "List all snapshots",
           "request": {
             "method": "GET",
@@ -1426,7 +1959,7 @@
           },
           "response": [
             {
-              "id": "a11d9e6c-24d7-4318-a2c0-3f2ab071aec7",
+              "id": "faed4e95-994a-48fa-b355-6c27fdcc917c",
               "name": "List all snapshots",
               "originalRequest": {
                 "method": "GET",
@@ -1599,6 +2132,7 @@
           ]
         },
         {
+          "_postman_id": "21162424-4728-4427-86e9-ba018e729d3b",
           "name": "List all Droplet snapshots",
           "request": {
             "method": "GET",
@@ -1644,6 +2178,7 @@
           "response": []
         },
         {
+          "_postman_id": "5edc7987-4f30-47a9-9925-d2968d4bc457",
           "name": "List all Volume snapshots",
           "request": {
             "method": "GET",
@@ -1688,13 +2223,15 @@
           },
           "response": []
         }
-      ]
+      ],
+      "description": "Snapshots are saved instances of a Droplet or a volume, which is reflected in the resource_type attribute. In order to avoid problems with compressing filesystems, each defines a min_disk_size attribute which is the minimum size of the Droplet or volume disk when creating a new resource from the saved snapshot.\r\n\r\nTo interact with snapshots, you will generally send requests to the snapshots endpoint at /v2/snapshots.\r\n\r\nName\tType\tDescription\r\nid\tstring\tThe unique identifier for the snapshot.\r\nname\tstring\tA human-readable name for the snapshot.\r\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the snapshot was created.\r\nregions\tarray\tAn array of the regions that the image is available in. The regions are represented by their identifying slug values.\r\nresource_id\tstring\tA unique identifier for the resource that the action is associated with.\r\nresource_type\tstring\tThe type of resource that the action is associated with.\r\nmin_disk_size\tinteger\tThe minimum size in GB required for a volume or Droplet to use this snapshot.\r\nsize_gigabytes\tinteger\tThe billable size of the snapshot in gigabytes."
     },
     {
+      "_postman_id": "c5dd7022-d730-4d30-ab48-12e6b169cb27",
       "name": "Sizes",
-      "description": "The sizes objects represent different packages of hardware resources that can be used for Droplets. When a Droplet is created, a size must be selected so that the correct resources can be allocated.\r\n\r\nEach size represents a plan that bundles together specific sets of resources. This includes the amount of RAM, the number of virtual CPUs, disk space, and transfer. The size object also includes the pricing details and the regions that the size is available in.\r\n\r\nName\tType\tDescription\r\nslug\tstring\tA human-readable string that is used to uniquely identify each size.\r\navailable\tboolean\tThis is a boolean value that represents whether new Droplets can be created with this size.\r\ntransfer\tinteger\tThe amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.\r\nprice_monthly\tinteger\tThis attribute describes the monthly cost of this Droplet size if the Droplet is kept for an entire month. The value is measured in US dollars.\r\nprice_hourly\tinteger\tThis describes the price of the Droplet size as measured hourly. The value is measured in US dollars.\r\nmemory\tinteger\tThe amount of RAM allocated to Droplets created of this size. The value is represented in megabytes.\r\nvcpus\tinteger\tThe integer of number CPUs allocated to Droplets of this size.\r\ndisk\tinteger\tThe amount of disk space set aside for Droplets of this size. The value is represented in gigabytes.\r\nregions\tarray\tAn array containing the region slugs where this size is available for Droplet creates.",
       "item": [
         {
+          "_postman_id": "c3c752ad-4c77-46c8-81aa-be9da50a7929",
           "name": "List all Sizes",
           "request": {
             "method": "GET",
@@ -1725,7 +2262,7 @@
           },
           "response": [
             {
-              "id": "18e13caa-74eb-405d-a8fa-5d843bb813fe",
+              "id": "01032084-c9b2-434d-9759-ff7c82b1a36d",
               "name": "List all Sizes",
               "originalRequest": {
                 "method": "GET",
@@ -1893,533 +2430,15 @@
             }
           ]
         }
-      ]
+      ],
+      "description": "The sizes objects represent different packages of hardware resources that can be used for Droplets. When a Droplet is created, a size must be selected so that the correct resources can be allocated.\r\n\r\nEach size represents a plan that bundles together specific sets of resources. This includes the amount of RAM, the number of virtual CPUs, disk space, and transfer. The size object also includes the pricing details and the regions that the size is available in.\r\n\r\nName\tType\tDescription\r\nslug\tstring\tA human-readable string that is used to uniquely identify each size.\r\navailable\tboolean\tThis is a boolean value that represents whether new Droplets can be created with this size.\r\ntransfer\tinteger\tThe amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.\r\nprice_monthly\tinteger\tThis attribute describes the monthly cost of this Droplet size if the Droplet is kept for an entire month. The value is measured in US dollars.\r\nprice_hourly\tinteger\tThis describes the price of the Droplet size as measured hourly. The value is measured in US dollars.\r\nmemory\tinteger\tThe amount of RAM allocated to Droplets created of this size. The value is represented in megabytes.\r\nvcpus\tinteger\tThe integer of number CPUs allocated to Droplets of this size.\r\ndisk\tinteger\tThe amount of disk space set aside for Droplets of this size. The value is represented in gigabytes.\r\nregions\tarray\tAn array containing the region slugs where this size is available for Droplet creates."
     },
     {
-      "name": "Tags",
-      "description": "A Tag is a label that can be applied to a resource (currently only Droplets) in order to better organize or facilitate the lookups and actions on it.\r\n\r\nTags have two attributes: a user defined name attribute and an embedded resources attribute with information about resources that have been tagged.\r\n\r\nName\tType\tDescription\r\nname\tstring\tTags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.\r\nresources\tobject\tAn embedded object containing key value pairs of resource type and resource statistics.\r\nTagged Resource Statistics include metadata regarding the resource type that has been tagged.\r\n\r\nName\tType\tDescription\r\nlast_tagged\tobject\tThe last tagged object for this type of resource\r\ncount\tinteger\tThe number tagged objects for this type of resource",
-      "item": [
-        {
-          "name": "Create a new Tag",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{bearer_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"name\": \"{{tag_name}}\"\r\n}"
-            },
-            "url": {
-              "raw": "{{base_url}}/tags",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tags"
-              ]
-            },
-            "description": "To create a Tag you can send a POST request to /v2/tags with a name attribute.\r\n\r\nThe response will be a JSON object with a key called _tag_."
-          },
-          "response": [
-            {
-              "id": "1820fdd8-1069-4dd2-975e-29178460fd58",
-              "name": "Create a new Tag success",
-              "originalRequest": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n  \"name\": \"{{tag_name}}\"\r\n}"
-                },
-                "url": {
-                  "raw": "{{base_url}}/tags",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "tags"
-                  ]
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "CF-RAY",
-                  "value": "443ac0e41af75b99-HEL",
-                  "name": "CF-RAY",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "max-age=0, private, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "90",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 01 Aug 2018 19:36:25 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expect-CT",
-                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
-                  "name": "Expect-CT",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Limit",
-                  "value": "5000",
-                  "name": "Ratelimit-Limit",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Remaining",
-                  "value": "4997",
-                  "name": "Ratelimit-Remaining",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Reset",
-                  "value": "1533152110",
-                  "name": "Ratelimit-Reset",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Server",
-                  "value": "cloudflare",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "X-Gateway",
-                  "value": "Edge-Gateway",
-                  "name": "X-Gateway",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Request-Id",
-                  "value": "f6c83331-2497-4e25-b48f-586d546f07c3",
-                  "name": "X-Request-Id",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Response-From",
-                  "value": "service",
-                  "name": "X-Response-From",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Runtime",
-                  "value": "0.016682",
-                  "name": "X-Runtime",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [
-                {
-                  "expires": "Invalid Date",
-                  "httpOnly": true,
-                  "domain": "digitalocean.com",
-                  "path": "/",
-                  "secure": false,
-                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
-                  "key": "__cfduid"
-                }
-              ],
-              "body": "{\"tag\":{\"name\":\"postman-do-tag\",\"resources\":{\"droplets\":{\"count\":0,\"last_tagged\":null}}}}\n"
-            }
-          ]
-        },
-        {
-          "name": "List all Tags",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{bearer_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{base_url}}/tags",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tags"
-              ]
-            },
-            "description": "To list all of your tags, you can send a GET request to /v2/tags.\r\n\r\nThe response will be a JSON object with a key called _tags_. "
-          },
-          "response": [
-            {
-              "id": "6335bd41-f662-4f74-a883-4e0774ca4904",
-              "name": "Empty tags",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
-                "url": {
-                  "raw": "{{base_url}}/tags",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "tags"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "CF-RAY",
-                  "value": "443abfa22ef55b99-HEL",
-                  "name": "CF-RAY",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "max-age=0, private, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "42",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 01 Aug 2018 19:35:33 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expect-CT",
-                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
-                  "name": "Expect-CT",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Limit",
-                  "value": "5000",
-                  "name": "Ratelimit-Limit",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Remaining",
-                  "value": "4998",
-                  "name": "Ratelimit-Remaining",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Reset",
-                  "value": "1533152110",
-                  "name": "Ratelimit-Reset",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Server",
-                  "value": "cloudflare",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "X-Gateway",
-                  "value": "Edge-Gateway",
-                  "name": "X-Gateway",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Request-Id",
-                  "value": "e39e940a-daa1-430c-b9d5-47aa678eb4ae",
-                  "name": "X-Request-Id",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Response-From",
-                  "value": "service",
-                  "name": "X-Response-From",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Runtime",
-                  "value": "0.010729",
-                  "name": "X-Runtime",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [
-                {
-                  "expires": "Invalid Date",
-                  "httpOnly": true,
-                  "domain": "digitalocean.com",
-                  "path": "/",
-                  "secure": false,
-                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
-                  "key": "__cfduid"
-                }
-              ],
-              "body": "{\"tags\":[],\"links\":{},\"meta\":{\"total\":0}}\n"
-            },
-            {
-              "id": "08989f0a-f9dd-47f4-925b-7252e59c7ee7",
-              "name": "List all Tags",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
-                "url": {
-                  "raw": "{{base_url}}/tags",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "tags"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "CF-RAY",
-                  "value": "443ac194397d5b99-HEL",
-                  "name": "CF-RAY",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "max-age=0, private, must-revalidate",
-                  "name": "Cache-Control",
-                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive",
-                  "name": "Connection",
-                  "description": "Options that are desired for the connection"
-                },
-                {
-                  "key": "Content-Encoding",
-                  "value": "gzip",
-                  "name": "Content-Encoding",
-                  "description": "The type of encoding used on the data."
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8",
-                  "name": "Content-Type",
-                  "description": "The mime type of this content"
-                },
-                {
-                  "key": "Date",
-                  "value": "Wed, 01 Aug 2018 19:36:53 GMT",
-                  "name": "Date",
-                  "description": "The date and time that the message was sent"
-                },
-                {
-                  "key": "Expect-CT",
-                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
-                  "name": "Expect-CT",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Limit",
-                  "value": "5000",
-                  "name": "Ratelimit-Limit",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Remaining",
-                  "value": "4995",
-                  "name": "Ratelimit-Remaining",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Ratelimit-Reset",
-                  "value": "1533152110",
-                  "name": "Ratelimit-Reset",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "Server",
-                  "value": "cloudflare",
-                  "name": "Server",
-                  "description": "A name for the server"
-                },
-                {
-                  "key": "Transfer-Encoding",
-                  "value": "chunked",
-                  "name": "Transfer-Encoding",
-                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-                },
-                {
-                  "key": "X-Gateway",
-                  "value": "Edge-Gateway",
-                  "name": "X-Gateway",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Request-Id",
-                  "value": "60a25a2e-eb9c-4b86-a8ec-91d1befedcc6",
-                  "name": "X-Request-Id",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Response-From",
-                  "value": "service",
-                  "name": "X-Response-From",
-                  "description": "Custom header"
-                },
-                {
-                  "key": "X-Runtime",
-                  "value": "0.013992",
-                  "name": "X-Runtime",
-                  "description": "Custom header"
-                }
-              ],
-              "cookie": [
-                {
-                  "expires": "Invalid Date",
-                  "httpOnly": true,
-                  "domain": "digitalocean.com",
-                  "path": "/",
-                  "secure": false,
-                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
-                  "key": "__cfduid"
-                }
-              ],
-              "body": "{\"tags\":[{\"name\":\"postman-do-tag\",\"resources\":{\"droplets\":{\"count\":0,\"last_tagged\":null}}}],\"links\":{},\"meta\":{\"total\":1}}\n"
-            }
-          ]
-        },
-        {
-          "name": "Tag a Resource",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{bearer_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"resources\": [\r\n    {\r\n      \"resource_id\": \"{{resource_id}}\",\r\n      \"resource_type\": \"droplet\"\r\n    }\r\n  ]\r\n}"
-            },
-            "url": {
-              "raw": "{{base_url}}/tags/{{tag_name}}/resources",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tags",
-                "{{tag_name}}",
-                "resources"
-              ]
-            },
-            "description": "Resources can be tagged by sending a POST request to /v2/tags/$TAG_NAME/resources with an array of json objects containing resource_id and resource_type attributes.\r\n\r\nCurrently only tagging of Droplets is supported. resource_id is expected to be the Droplet's id attribute as a string, and resource_type is expected to be the string droplet."
-          },
-          "response": []
-        }
-      ]
-    },
-    {
+      "_postman_id": "83d8fafb-90fc-45fe-8ca5-217ca657b31b",
       "name": "SSH Keys",
-      "description": "DigitalOcean allows you to add SSH public keys to the interface so that you can embed your public key into a Droplet at the time of creation. Only the public key is required to take advantage of this functionality.\r\n\r\nName\tType\tDescription\r\nid\tinteger\tThis is a unique identification number for the key. This can be used to reference a specific SSH key when you wish to embed a key into a Droplet.\r\nfingerprint\tstring\tThis attribute contains the fingerprint value that is generated from the public key. This is a unique identifier that will differentiate it from other keys using a format that SSH recognizes.\r\npublic_key\tstring\tThis attribute contains the entire public key string that was uploaded. This is what is embedded into the root user's authorized_keys file if you choose to include this SSH key during Droplet creation.\r\nname\tstring\tThis is the human-readable display name for the given SSH key. This is used to easily identify the SSH keys when they are displayed.",
       "item": [
         {
+          "_postman_id": "a4d3237a-4059-46f1-9f5a-57a35a3151c0",
           "name": "List all Keys",
           "request": {
             "method": "GET",
@@ -2448,7 +2467,7 @@
           },
           "response": [
             {
-              "id": "085df758-d153-402c-86ff-905b574a5280",
+              "id": "d038df24-b6e6-43e8-ad94-b8ce35afae95",
               "name": "List all Keys fail",
               "originalRequest": {
                 "method": "GET",
@@ -2549,7 +2568,7 @@
               "body": "{\"id\": \"unauthorized\", \"message\": \"Unable to authenticate you.\" }"
             },
             {
-              "id": "432702d8-7976-4740-a664-a4252eea13dd",
+              "id": "0275a93c-b514-4c84-9116-dc79255cc484",
               "name": "List all Keys",
               "originalRequest": {
                 "method": "GET",
@@ -2718,6 +2737,7 @@
           ]
         },
         {
+          "_postman_id": "a7abf8c5-a90c-4cc0-9ac2-5314dd48b153",
           "name": "Create a new Key",
           "request": {
             "method": "POST",
@@ -2749,7 +2769,7 @@
           },
           "response": [
             {
-              "id": "221e45f9-a977-4960-b15a-47df465c2256",
+              "id": "2331085a-e1e7-4efa-bbb7-c58a27c44e98",
               "name": "Create a new Key",
               "originalRequest": {
                 "method": "POST",
@@ -2915,6 +2935,7 @@
           ]
         },
         {
+          "_postman_id": "d54c7e58-8146-4de7-a80c-b38b62de9c1f",
           "name": "Retrieve an existing Key",
           "request": {
             "method": "GET",
@@ -2944,7 +2965,7 @@
           },
           "response": [
             {
-              "id": "b35f8e61-05a3-4d47-a923-f4314799df1a",
+              "id": "a42b1d59-2842-45da-b183-6256f9c17faf",
               "name": "Retrieve an existing Key",
               "originalRequest": {
                 "method": "GET",
@@ -3114,6 +3135,7 @@
           ]
         },
         {
+          "_postman_id": "c9747974-c005-4289-90de-a79b7ed6e507",
           "name": "Update a Key",
           "request": {
             "method": "PUT",
@@ -3146,7 +3168,7 @@
           },
           "response": [
             {
-              "id": "34b6643f-09d5-4bc2-882e-e8eb786efb98",
+              "id": "e021fb33-7ab2-4d4b-b92c-5446b46be4ea",
               "name": "Update a Key",
               "originalRequest": {
                 "method": "PUT",
@@ -3319,6 +3341,7 @@
           ]
         },
         {
+          "_postman_id": "b3da0349-7653-4d52-8165-b796be809cde",
           "name": "Destroy a Key",
           "request": {
             "method": "DELETE",
@@ -3348,7 +3371,532 @@
           },
           "response": []
         }
-      ]
+      ],
+      "description": "DigitalOcean allows you to add SSH public keys to the interface so that you can embed your public key into a Droplet at the time of creation. Only the public key is required to take advantage of this functionality.\r\n\r\nName\tType\tDescription\r\nid\tinteger\tThis is a unique identification number for the key. This can be used to reference a specific SSH key when you wish to embed a key into a Droplet.\r\nfingerprint\tstring\tThis attribute contains the fingerprint value that is generated from the public key. This is a unique identifier that will differentiate it from other keys using a format that SSH recognizes.\r\npublic_key\tstring\tThis attribute contains the entire public key string that was uploaded. This is what is embedded into the root user's authorized_keys file if you choose to include this SSH key during Droplet creation.\r\nname\tstring\tThis is the human-readable display name for the given SSH key. This is used to easily identify the SSH keys when they are displayed."
+    },
+    {
+      "_postman_id": "0fc50a2e-b1e5-401d-8d11-0de15c46a491",
+      "name": "Tags",
+      "item": [
+        {
+          "_postman_id": "28ee919d-1b5a-4114-be72-df0de17c8cc7",
+          "name": "Create a new Tag",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"{{tag_name}}\"\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tags",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tags"
+              ]
+            },
+            "description": "To create a Tag you can send a POST request to /v2/tags with a name attribute.\r\n\r\nThe response will be a JSON object with a key called _tag_."
+          },
+          "response": [
+            {
+              "id": "8045d0bf-cdb7-4490-a893-4a496b6a4b38",
+              "name": "Create a new Tag success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"{{tag_name}}\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/tags",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443ac0e41af75b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "90",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:36:25 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4997",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "f6c83331-2497-4e25-b48f-586d546f07c3",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.016682",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"tag\":{\"name\":\"postman-do-tag\",\"resources\":{\"droplets\":{\"count\":0,\"last_tagged\":null}}}}\n"
+            }
+          ]
+        },
+        {
+          "_postman_id": "8d80df88-8f1e-4905-8e83-d2e3089282a4",
+          "name": "List all Tags",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/tags",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tags"
+              ]
+            },
+            "description": "To list all of your tags, you can send a GET request to /v2/tags.\r\n\r\nThe response will be a JSON object with a key called _tags_. "
+          },
+          "response": [
+            {
+              "id": "44a78b78-bbfe-4933-827c-110e19d71c50",
+              "name": "Empty tags",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{base_url}}/tags",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443abfa22ef55b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "42",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:35:33 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4998",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "e39e940a-daa1-430c-b9d5-47aa678eb4ae",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.010729",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"tags\":[],\"links\":{},\"meta\":{\"total\":0}}\n"
+            },
+            {
+              "id": "ab397328-32a8-4a92-8215-a827633189b7",
+              "name": "List all Tags",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{base_url}}/tags",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "443ac194397d5b99-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 01 Aug 2018 19:36:53 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4995",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1533152110",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "60a25a2e-eb9c-4b86-a8ec-91d1befedcc6",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.013992",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"tags\":[{\"name\":\"postman-do-tag\",\"resources\":{\"droplets\":{\"count\":0,\"last_tagged\":null}}}],\"links\":{},\"meta\":{\"total\":1}}\n"
+            }
+          ]
+        },
+        {
+          "_postman_id": "86c2ad30-6255-4043-91ef-1ac61dca3c42",
+          "name": "Tag a Resource",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resources\": [\r\n    {\r\n      \"resource_id\": \"{{resource_id}}\",\r\n      \"resource_type\": \"droplet\"\r\n    }\r\n  ]\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/tags/{{tag_name}}/resources",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tags",
+                "{{tag_name}}",
+                "resources"
+              ]
+            },
+            "description": "Resources can be tagged by sending a POST request to /v2/tags/$TAG_NAME/resources with an array of json objects containing resource_id and resource_type attributes.\r\n\r\nCurrently only tagging of Droplets is supported. resource_id is expected to be the Droplet's id attribute as a string, and resource_type is expected to be the string droplet."
+          },
+          "response": []
+        }
+      ],
+      "description": "A Tag is a label that can be applied to a resource (currently only Droplets) in order to better organize or facilitate the lookups and actions on it.\r\n\r\nTags have two attributes: a user defined name attribute and an embedded resources attribute with information about resources that have been tagged.\r\n\r\nName\tType\tDescription\r\nname\tstring\tTags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.\r\nresources\tobject\tAn embedded object containing key value pairs of resource type and resource statistics.\r\nTagged Resource Statistics include metadata regarding the resource type that has been tagged.\r\n\r\nName\tType\tDescription\r\nlast_tagged\tobject\tThe last tagged object for this type of resource\r\ncount\tinteger\tThe number tagged objects for this type of resource"
     }
   ],
   "event": [
@@ -3375,67 +3923,64 @@
   ],
   "variable": [
     {
-      "id": "196b6e2e-c340-447d-a204-0da2d3dcfa4e",
+      "id": "bb58ee10-2ccc-4153-84cb-eecc65a3d3e0",
       "key": "name",
       "value": "digitalocean.fi",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "525a7324-29c1-4604-b3d3-511762e71f38",
+      "id": "9b0b0909-f267-4448-9b96-f94728f2ad90",
       "key": "region",
       "value": "nyc3",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "279a4801-a0cf-405f-a888-7820350b7b34",
+      "id": "7ec5cc9b-f484-4ac7-a66a-7b90dda7f2c0",
       "key": "size",
       "value": "s-1vcpu-1gb",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "6171caec-c0f8-4755-99b9-5d892bf0709e",
+      "id": "6725b40e-8e0b-4504-8c2a-a9cce37e67e8",
       "key": "image",
       "value": "ubuntu-16-04-x64",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "723b2b25-bb25-4bf8-aec1-c276f064554a",
+      "id": "d3468b68-c4a3-4b3f-818e-83c4c697b4de",
       "key": "resource_id",
       "value": "523311244",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "3c2a0774-7a18-4c42-a3b6-1be7ff9eb786",
+      "id": "95a188f6-9e44-4663-86ee-e13deb815360",
       "key": "tag_name",
       "value": "postman-do-tag",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "0b773666-e28a-4f52-bad8-286a76b9e5b6",
+      "id": "cadab624-464f-4b36-a806-503fbd6c825b",
       "key": "image_id",
       "value": "63261821",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "9ed0e8f1-538e-4d2f-88b1-42dc7386ae83",
+      "id": "aad93ecf-6b60-4ad7-b32c-7e21ace3f9ad",
       "key": "ssh_pub_demo",
       "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAQQDDHr/jh2Jy4yALcK4JyWbVkPRaWmhck3IgCoeOO3z1e2dBowLh64QAM+Qb72pxekALga2oi4GvT+TlWNhzPH4V example",
-      "type": "string",
-      "description": ""
+      "type": "string"
     },
     {
-      "id": "1459b90e-ddc0-4b0f-83bc-6a2b92b937e2",
+      "id": "97224348-2f92-4120-97fa-5b4387a20879",
       "key": "ssh_key_id",
       "value": "22162952",
-      "type": "string",
-      "description": ""
+      "type": "string"
+    },
+    {
+      "id": "570f2e7b-ab83-44a5-8718-21f9054a40de",
+      "key": "certificate_id",
+      "value": "892071a0-bb95-49bc-8021-3afd67a210bf",
+      "type": "string"
     }
   ]
 }
