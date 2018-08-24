@@ -30,6 +30,8 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 ## Collection level
 - action_id
 - certificate_id
+- droplet_id
+- floating_ip
 - image_id
 - image name
 - name (domain)
@@ -49,7 +51,7 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - [x] Droplets
 - [ ] Droplet Actions
 - [ ] Firewalls
-- [ ] Floating IPs
+- [x] Floating IPs
 - [ ] Floating IPs Actions
 - [ ] Images
 - [ ] Images Actions
