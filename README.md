@@ -1,5 +1,5 @@
 [![DigitalOcean API Version](https://img.shields.io/badge/digitalocean-api--v2-green.svg)](https://developers.digitalocean.com/documentation/v2/)
-[![Postman Version](https://img.shields.io/badge/postman-v6.2.3-green.svg)](https://www.getpostman.com/docs/v6/)
+[![Postman Version](https://img.shields.io/badge/postman-v6.2.5-green.svg)](https://www.getpostman.com/docs/v6/)
 
 [DigitalOcean][do-api]-Postman Collection
 ========================================
@@ -28,23 +28,35 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - per_page
 
 ## Collection level
-- name (domain)
-- tag_name
-- image name
+- action_id
+- certificate_id
 - image_id
-- resource_id
+- image name
+- name (domain)
 - region
+- resource_id
+- ssh_key_id
+- tag_name
 
 ## TODOs
 - [x] Accounts
+- [x] Actions
+- [ ] Block Storage
+- [ ] Block Storage Actions
+- [x] Certificates
+- [ ] Domains
+- [ ] Domains Records
 - [x] Droplets
-- [ ] Actions
 - [ ] Droplet Actions
-- [ ] Floating IPs
 - [ ] Firewalls
+- [ ] Floating IPs
+- [ ] Floating IPs Actions
+- [ ] Images
+- [ ] Images Actions
 - [ ] Load Balancers
 - [x] Regions
 - [x] Sizes
+- [ ] Snapshots
 - [x] SSH-Keys
 
 ## Author
