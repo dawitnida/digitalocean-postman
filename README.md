@@ -42,6 +42,7 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - [x] Accounts
 - [x] Actions
 - [ ] Block Storage
+- [ ] Block Storage Actions
 - [x] Certificates
 - [ ] Domains
 - [ ] Domains Records
@@ -49,9 +50,13 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - [ ] Droplet Actions
 - [ ] Firewalls
 - [ ] Floating IPs
+- [ ] Floating IPs Actions
+- [ ] Images
+- [ ] Images Actions
 - [ ] Load Balancers
 - [x] Regions
 - [x] Sizes
+- [ ] Snapshots
 - [x] SSH-Keys
 
 ## Author
