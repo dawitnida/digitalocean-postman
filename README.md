@@ -30,6 +30,7 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 ## Collection level
 - action_id
 - certificate_id
+- domain_name
 - droplet_id
 - floating_ip
 - image_id
@@ -46,7 +47,7 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - [ ] Block Storage
 - [ ] Block Storage Actions
 - [x] Certificates
-- [ ] Domains
+- [x] Domains
 - [ ] Domains Records
 - [x] Droplets
 - [ ] Droplet Actions
