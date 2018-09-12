@@ -316,7 +316,7 @@
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer b7d03a6947b217efb6f3ec3bd3504582"
+                    "value": "Bearer {{bearer_token}}"
                   }
                 ],
                 "body": {
@@ -4266,7 +4266,7 @@
       "name": "Images",
       "item": [
         {
-          "name": "Retrieve an existing Image by id",
+          "name": "List all Images",
           "request": {
             "method": "GET",
             "header": [
@@ -4279,65 +4279,79 @@
                 "value": "Bearer {{bearer_token}}"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{base_url}}/images/{{image_id}}",
+              "raw": "{{base_url}}/images?page={{page}}&per_page={{per_page}}",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "images",
-                "{{image_id}}"
+                "images"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{per_page}}"
+                }
               ]
             },
-            "description": "To retrieve information about an image (public or private), send a GET request to /v2/images/$IMAGE_ID.\r\n\r\nThe response will be a JSON object with a key called image. The value of this will be an image object containing the standard image attributes:"
+            "description": "To list all of the images available on your account, send a GET request to /v2/images.\r\n\r\nThe response will be a JSON object with a key called images. This will be set to an array of image objects, each of which will contain the standard image attributes:"
           },
           "response": [
             {
-              "name": "Retrieve an existing Image by id",
+              "name": "List all Images",
               "originalRequest": {
                 "method": "GET",
                 "header": [
                   {
                     "key": "Content-Type",
-                    "value": "application/json"
+                    "value": "application/json",
+                    "disabled": false
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer {{bearer_token}}"
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
                   }
                 ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
+                "body": {},
                 "url": {
-                  "raw": "{{base_url}}/images/{{image_id}}",
+                  "raw": "{{base_url}}/images?page={{page}}&per_page={{per_page}}",
                   "host": [
                     "{{base_url}}"
                   ],
                   "path": [
-                    "images",
-                    "{{image_id}}"
+                    "images"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "{{page}}"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "{{per_page}}"
+                    }
                   ]
                 }
               },
-              "status": "Not Found",
-              "code": 404,
+              "status": "OK",
+              "code": 200,
               "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "CF-RAY",
-                  "value": "443ac9dd2dad5b99-HEL",
+                  "value": "4594f86b6a005afd-HEL",
                   "name": "CF-RAY",
                   "description": "Custom header"
                 },
                 {
                   "key": "Cache-Control",
-                  "value": "no-cache",
+                  "value": "max-age=0, private, must-revalidate",
                   "name": "Cache-Control",
                   "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
                 },
@@ -4361,9 +4375,15 @@
                 },
                 {
                   "key": "Date",
-                  "value": "Wed, 01 Aug 2018 19:42:33 GMT",
+                  "value": "Wed, 12 Sep 2018 20:02:13 GMT",
                   "name": "Date",
                   "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"9ca7a28808ff4553c6fe8cc468c89815\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
                 },
                 {
                   "key": "Expect-CT",
@@ -4379,13 +4399,13 @@
                 },
                 {
                   "key": "Ratelimit-Remaining",
-                  "value": "4985",
+                  "value": "4997",
                   "name": "Ratelimit-Remaining",
                   "description": "Custom header"
                 },
                 {
                   "key": "Ratelimit-Reset",
-                  "value": "1533152110",
+                  "value": "1536782452",
                   "name": "Ratelimit-Reset",
                   "description": "Custom header"
                 },
@@ -4421,7 +4441,7 @@
                 },
                 {
                   "key": "X-Request-Id",
-                  "value": "2cc5e399-8cee-4055-98bb-1c6265b0bf97",
+                  "value": "1d464d84-acfc-4890-8f1b-5b81e1057c62",
                   "name": "X-Request-Id",
                   "description": "Custom header"
                 },
@@ -4433,7 +4453,7 @@
                 },
                 {
                   "key": "X-Runtime",
-                  "value": "0.066111",
+                  "value": "0.138698",
                   "name": "X-Runtime",
                   "description": "Custom header"
                 },
@@ -4446,16 +4466,1500 @@
               ],
               "cookie": [
                 {
-                  "expires": "Invalid Date",
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
                   "httpOnly": true,
                   "domain": "digitalocean.com",
                   "path": "/",
                   "secure": false,
-                  "value": "dddc37f9edb69c5c3d2047e5e4060a9fc1533148205",
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
                   "key": "__cfduid"
                 }
               ],
-              "body": "{\"id\":\"not_found\",\"message\":\"The resource you were accessing could not be found.\"}"
+              "body": "{\"images\":[{\"id\":38123186,\"name\":\"1883.1.0 (beta)\",\"distribution\":\"CoreOS\",\"slug\":\"coreos-beta\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-09-11T22:47:44Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.43},{\"id\":16376426,\"name\":\"Cassandra on 14.04\",\"distribution\":\"Ubuntu\",\"slug\":\"cassandra\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2016-03-21T04:25:45Z\",\"min_disk_size\":30,\"type\":\"snapshot\",\"size_gigabytes\":0.59}],\"links\":{\"pages\":{\"last\":\"https://api.digitalocean.com/v2/images?page=29&per_page=2\",\"next\":\"https://api.digitalocean.com/v2/images?page=2&per_page=2\"}},\"meta\":{\"total\":57}}"
+            }
+          ]
+        },
+        {
+          "name": "List all Application Images",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/images?page={{page}}&per_page={{per_page}}&type={{type_application}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "images"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{per_page}}"
+                },
+                {
+                  "key": "type",
+                  "value": "{{type_application}}"
+                }
+              ]
+            },
+            "description": "To retrieve only application images, include the type query paramter set to application, /v2/images?type=application."
+          },
+          "response": [
+            {
+              "name": "List all Application Images",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/images?page={{page}}&per_page={{per_page}}&type={{type_application}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "images"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "{{page}}"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "{{per_page}}"
+                    },
+                    {
+                      "key": "type",
+                      "value": "{{type_application}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "459505905aa05afd-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Sep 2018 20:11:11 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"4325067136729f6280e66b3a66a13aa2\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4989",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1536782452",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "e7f4237a-b33d-4c76-8f5b-c7b25247bb1e",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.132840",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"images\":[{\"id\":38123186,\"name\":\"1883.1.0 (beta)\",\"distribution\":\"CoreOS\",\"slug\":\"coreos-beta\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-09-11T22:47:44Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.43},{\"id\":16376426,\"name\":\"Cassandra on 14.04\",\"distribution\":\"Ubuntu\",\"slug\":\"cassandra\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2016-03-21T04:25:45Z\",\"min_disk_size\":30,\"type\":\"snapshot\",\"size_gigabytes\":0.59}],\"links\":{\"pages\":{\"last\":\"https://api.digitalocean.com/v2/images?page=29&per_page=2&type=%7B%7Btype_application%7D%7D\",\"next\":\"https://api.digitalocean.com/v2/images?page=2&per_page=2&type=%7B%7Btype_application%7D%7D\"}},\"meta\":{\"total\":57}}"
+            }
+          ]
+        },
+        {
+          "name": "List all Distribution Images",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/images?page={{page}}&per_page={{per_page}}&type={{type_distribution}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "images"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{per_page}}"
+                },
+                {
+                  "key": "type",
+                  "value": "{{type_distribution}}"
+                }
+              ]
+            },
+            "description": "To retrieve only distribution images, include the type query paramter set to distribution, /v2/images?type=distribution."
+          },
+          "response": [
+            {
+              "name": "List all Distribution Images",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/images?page={{page}}&per_page={{per_page}}&type={{type_distribution}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "images"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "{{page}}"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "{{per_page}}"
+                    },
+                    {
+                      "key": "type",
+                      "value": "{{type_distribution}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "4594fca09f615afd-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Sep 2018 20:05:05 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"c1dd34c7c0d2b71d0c010f6ffd80076b\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4995",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1536782452",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "be1025bb-3317-4206-b2ed-f40d7d891c1d",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.215027",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"images\":[{\"id\":38123186,\"name\":\"1883.1.0 (beta)\",\"distribution\":\"CoreOS\",\"slug\":\"coreos-beta\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-09-11T22:47:44Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.43},{\"id\":24081356,\"name\":\"10.3 x64 zfs\",\"distribution\":\"FreeBSD\",\"slug\":\"freebsd-10-3-x64-zfs\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2017-04-10T23:57:15Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":1.0},{\"id\":24081552,\"name\":\"10.3 x64\",\"distribution\":\"FreeBSD\",\"slug\":\"freebsd-10-3-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2017-04-11T00:03:44Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.95},{\"id\":26671396,\"name\":\"11.1 x64\",\"distribution\":\"FreeBSD\",\"slug\":\"freebsd-11-1-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2017-07-29T21:47:10Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.6899999999999999},{\"id\":26671397,\"name\":\"11.1 x64 ZFS\",\"distribution\":\"FreeBSD\",\"slug\":\"freebsd-11-1-x64-zfs\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2017-07-29T21:47:21Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.7},{\"id\":28282122,\"name\":\"10.4 x64 ZFS\",\"distribution\":\"FreeBSD\",\"slug\":\"freebsd-10-4-x64-zfs\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2017-10-03T18:24:11Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.75},{\"id\":28282143,\"name\":\"10.4 x64\",\"distribution\":\"FreeBSD\",\"slug\":\"freebsd-10-4-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2017-10-03T18:27:29Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.72},{\"id\":29492039,\"name\":\"27 x64\",\"distribution\":\"Fedora\",\"slug\":\"fedora-27-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2017-11-20T16:05:14Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.23},{\"id\":31354013,\"name\":\"6.9 x32\",\"distribution\":\"CentOS\",\"slug\":\"centos-6-x32\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-01-30T12:26:21Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.33},{\"id\":31734516,\"name\":\"8.10 x64\",\"distribution\":\"Debian\",\"slug\":\"debian-8-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-02-12T05:22:50Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.45},{\"id\":31737616,\"name\":\"8.10 x32\",\"distribution\":\"Debian\",\"slug\":\"debian-8-x32\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-02-12T09:03:57Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.45},{\"id\":33948356,\"name\":\"28 x64\",\"distribution\":\"Fedora\",\"slug\":\"fedora-28-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-05-01T16:08:07Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.27},{\"id\":34114584,\"name\":\"28 x64 Atomic\",\"distribution\":\"Fedora Atomic\",\"slug\":\"fedora-28-x64-atomic\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-05-07T01:40:50Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.67},{\"id\":34487567,\"name\":\"7.5 x64\",\"distribution\":\"CentOS\",\"slug\":\"centos-7-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-05-19T08:31:48Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.44},{\"id\":34902021,\"name\":\"6.9 x64\",\"distribution\":\"CentOS\",\"slug\":\"centos-6-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-06-02T00:21:33Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.35},{\"id\":35256005,\"name\":\"v1.4.0\",\"distribution\":\"RancherOS\",\"slug\":\"rancheros\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-06-13T17:19:34Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.07000000000000001},{\"id\":35844000,\"name\":\"11.2 x64 zfs\",\"distribution\":\"FreeBSD\",\"slug\":\"freebsd-11-2-x64-zfs\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-07-02T16:16:35Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.79},{\"id\":35844052,\"name\":\"11.2 x64 ufs\",\"distribution\":\"FreeBSD\",\"slug\":\"freebsd-11-2-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-07-02T16:23:45Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.73},{\"id\":36279760,\"name\":\"9.5 x64\",\"distribution\":\"Debian\",\"slug\":\"debian-9-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-07-16T13:01:55Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.63},{\"id\":37205960,\"name\":\"14.04.5 x32\",\"distribution\":\"Ubuntu\",\"slug\":\"ubuntu-14-04-x32\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-08-14T18:16:40Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.26},{\"id\":37206187,\"name\":\"14.04.5 x64\",\"distribution\":\"Ubuntu\",\"slug\":\"ubuntu-14-04-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-08-14T18:25:16Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.28}],\"links\":{\"pages\":{\"last\":\"https://api.digitalocean.com/v2/images?page=2&per_page=21&type=distribution\",\"next\":\"https://api.digitalocean.com/v2/images?page=2&per_page=21&type=distribution\"}},\"meta\":{\"total\":26}}"
+            }
+          ]
+        },
+        {
+          "name": "List a User's Images",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/images?page={{page}}&per_page={{per_page}}&private={{is_private}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "images"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{per_page}}"
+                },
+                {
+                  "key": "private",
+                  "value": "{{is_private}}"
+                }
+              ]
+            },
+            "description": "To retrieve only the private images of a user, include the private query paramter set to true, /v2/images?private=true."
+          },
+          "response": [
+            {
+              "name": "List a User's Images",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/images?page={{page}}&per_page={{per_page}}&private={{is_private}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "images"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "{{page}}"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "{{per_page}}"
+                    },
+                    {
+                      "key": "private",
+                      "value": "{{is_private}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "45950b2d7c1a5afd-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Sep 2018 20:15:01 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"97fb9199ba249731d2d84feab64919b2\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4986",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1536782452",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "a04eee8a-bc4e-41b2-8992-7d31ad0e4150",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.078652",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\n    \"images\": [\n        {\n            \"id\": 377274028,\n            \"name\": \"api.etmdb.com-153545452389190-Aug-30-2015\",\n            \"distribution\": \"Ubuntu\",\n            \"slug\": null,\n            \"public\": false,\n            \"regions\": [\n                \"ams2\",\n                \"lon1\",\n                \"blr1\"\n            ],\n            \"created_at\": \"2015-08-30T18:10:09Z\",\n            \"min_disk_size\": 30,\n            \"type\": \"snapshot\",\n            \"size_gigabytes\": 29.68\n        }\n    ],\n    \"links\": {},\n    \"meta\": {\n        \"total\": 1\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "List all actions for an image",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/images/{{image_id}}/actions?page={{page}}&per_page={{per_page}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "images",
+                "{{image_id}}",
+                "actions"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "{{per_page}}"
+                }
+              ]
+            },
+            "description": "To retrieve all actions that have been executed on an image, send a GET request to /v2/images/$IMAGE_ID/actions.\r\n\r\nThe results will be returned as a JSON object with an actions key. "
+          },
+          "response": [
+            {
+              "name": "List all actions for an image",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/images/{{image_id}}/actions?page={{page}}&per_page={{per_page}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "images",
+                    "{{image_id}}",
+                    "actions"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "{{page}}"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "{{per_page}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "4595111d9b245afd-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Sep 2018 20:19:04 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"93735aa0b3ea7f81a8719648f0350e09\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4982",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1536782452",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "6af80aba-a3da-4237-9c72-7b43df83cdbf",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.072418",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\n    \"actions\": [\n        {\n            \"id\": 501260567,\n            \"status\": \"completed\",\n            \"type\": \"transfer\",\n            \"started_at\": \"2018-08-30T19:15:51Z\",\n            \"completed_at\": \"2018-08-30T22:45:57Z\",\n            \"resource_id\": 37524028,\n            \"resource_type\": \"image\",\n            \"region\": null,\n            \"region_slug\": null\n        },\n        {\n            \"id\": 501260459,\n            \"status\": \"completed\",\n            \"type\": \"transfer\",\n            \"started_at\": \"2018-08-30T19:15:35Z\",\n            \"completed_at\": \"2018-08-30T22:43:46Z\",\n            \"resource_id\": 37524028,\n            \"resource_type\": \"image\",\n            \"region\": null,\n            \"region_slug\": null\n        }\n    ],\n    \"links\": {},\n    \"meta\": {\n        \"total\": 2\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve an existing Image by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/images/{{image_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "images",
+                "{{image_id}}"
+              ]
+            },
+            "description": "To retrieve information about an image (public or private), send a GET request to /v2/images/$IMAGE_ID.\r\n\r\nThe response will be a JSON object with a key called image."
+          },
+          "response": [
+            {
+              "name": "Retrieve an existing Image by id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{base_url}}/images/{{image_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "images",
+                    "{{image_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "4595168e08cf5afd-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Sep 2018 20:22:47 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"b43969196b94b42a26d2838e3220cd22\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4979",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1536782452",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "27edf6a6-fb9f-4292-b8db-6703e076090c",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.111090",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\n    \"image\": {\n        \"id\": 35773224028,\n        \"name\": \"dev.etmdb.com-1535652389190-Aug-30-2015\",\n        \"distribution\": \"Ubuntu\",\n        \"slug\": null,\n        \"public\": false,\n        \"regions\": [\n            \"ams2\",\n            \"lon1\",\n            \"blr1\"\n        ],\n        \"created_at\": \"2018-08-30T18:10:09Z\",\n        \"min_disk_size\": 30,\n        \"type\": \"snapshot\",\n        \"size_gigabytes\": 62.68\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve an existing Image by slug",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{base_url}}/images/{{image_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "images",
+                "{{image_slug}}"
+              ]
+            },
+            "description": "To retrieve information about a public image, one option is to send a GET request to /v2/images/$IMAGE_SLUG.\r\n\r\nThe response will be a JSON object with a key called image. "
+          },
+          "response": [
+            {
+              "name": "Retrieve an existing Image by slug",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "{{base_url}}/images/{{image_slug}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "images",
+                    "{{image_slug}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "45951e3408445afd-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Sep 2018 20:28:00 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"8d9ca8890305b122ad601f7d6a4063f3\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4975",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1536782452",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "06924120-4cea-4c00-bef5-41f433a548cb",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.071211",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\"image\":{\"id\":37206537,\"name\":\"16.04.4 x64\",\"distribution\":\"Ubuntu\",\"slug\":\"ubuntu-16-04-x64\",\"public\":true,\"regions\":[\"nyc1\",\"sfo1\",\"nyc2\",\"ams2\",\"sgp1\",\"lon1\",\"nyc3\",\"ams3\",\"fra1\",\"tor1\",\"sfo2\",\"blr1\"],\"created_at\":\"2018-08-14T18:56:32Z\",\"min_disk_size\":20,\"type\":\"snapshot\",\"size_gigabytes\":0.31}}"
+            }
+          ]
+        },
+        {
+          "name": "Update an Image",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"{{new_image_name}}\"\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/images/{{image_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "images",
+                "{{image_id}}"
+              ]
+            },
+            "description": "To update an image, send a PUT request to /v2/images/$IMAGE_ID. Set the \"name\" attribute to the new value you would like to use."
+          },
+          "response": [
+            {
+              "name": "Update an Image",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}",
+                    "disabled": false
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"{{new_image_name}}\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/images/{{image_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "images",
+                    "{{image_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "CF-RAY",
+                  "value": "45952421ddbf5afd-HEL",
+                  "name": "CF-RAY",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "max-age=0, private, must-revalidate",
+                  "name": "Cache-Control",
+                  "description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": "Options that are desired for the connection"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "name": "Content-Encoding",
+                  "description": "The type of encoding used on the data."
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": "The mime type of this content"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 12 Sep 2018 20:32:03 GMT",
+                  "name": "Date",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "key": "Etag",
+                  "value": "W/\"3634ef819e234059d14f0d7dc34c55e3\"",
+                  "name": "Etag",
+                  "description": "An identifier for a specific version of a resource, often a message digest"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                  "name": "Expect-CT",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Limit",
+                  "value": "5000",
+                  "name": "Ratelimit-Limit",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Remaining",
+                  "value": "4972",
+                  "name": "Ratelimit-Remaining",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Ratelimit-Reset",
+                  "value": "1536782452",
+                  "name": "Ratelimit-Reset",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare",
+                  "name": "Server",
+                  "description": "A name for the server"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "name": "Transfer-Encoding",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN",
+                  "name": "X-Frame-Options",
+                  "description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway",
+                  "name": "X-Gateway",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "1ce423f8-1b20-4288-a2e0-fc145739d6b7",
+                  "name": "X-Request-Id",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service",
+                  "name": "X-Response-From",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.164101",
+                  "name": "X-Runtime",
+                  "description": "Custom header"
+                },
+                {
+                  "key": "X-Xss-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-Xss-Protection",
+                  "description": "Cross-site scripting (XSS) filter"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Thu Aug 01 2019 23:15:06 GMT+0300 (FLE Daylight Time)",
+                  "httpOnly": true,
+                  "domain": "digitalocean.com",
+                  "path": "/",
+                  "secure": false,
+                  "value": "d17e588f7c99717215499d2e2c273e4dc1533154506",
+                  "key": "__cfduid"
+                }
+              ],
+              "body": "{\n    \"image\": {\n        \"id\": 3776524028,\n        \"name\": \"etmdb.com-1535652389190-Aug-30-2015\",\n        \"distribution\": \"Ubuntu\",\n        \"slug\": null,\n        \"public\": false,\n        \"regions\": [\n            \"ams2\",\n            \"lon1\",\n            \"blr1\"\n        ],\n        \"created_at\": \"2016-08-30T18:10:09Z\",\n        \"min_disk_size\": 30,\n        \"type\": \"snapshot\",\n        \"size_gigabytes\": 22.68\n    }\n}"
             }
           ]
         },
@@ -6515,87 +8019,117 @@
   ],
   "variable": [
     {
-      "id": "8f9c0873-88d9-4e49-841f-b9d124f5a558",
+      "id": "df8ce908-5984-45b5-8815-86153b54e98b",
       "key": "name",
       "value": "digitalocean.fi",
       "type": "string"
     },
     {
-      "id": "a4834d61-4674-47eb-87bc-c5f6c773ea71",
+      "id": "1b4ed006-1ee0-41c6-bf61-d47f909f55d0",
       "key": "region",
       "value": "nyc3",
       "type": "string"
     },
     {
-      "id": "76a95550-0aef-42da-8b4e-9e27bca89c6f",
+      "id": "2d7f4363-c9a2-4b8e-a700-53ddb40b36b9",
       "key": "size",
       "value": "s-1vcpu-1gb",
       "type": "string"
     },
     {
-      "id": "032521c7-5a28-49c6-a518-3d342e7b7715",
+      "id": "c2f2a9c9-45fc-4b12-81bf-91bf61c3f02e",
       "key": "image",
       "value": "ubuntu-16-04-x64",
       "type": "string"
     },
     {
-      "id": "dbccd680-b759-451b-9431-13a93a28457a",
+      "id": "56a11c2d-8199-4299-bef8-a4bd9b71d9be",
       "key": "resource_id",
       "value": "523311244",
       "type": "string"
     },
     {
-      "id": "68cafb24-58a5-4fc2-929d-21e1d4f03acb",
+      "id": "861035ae-c72e-4c42-9595-9a688f008e1a",
       "key": "tag_name",
       "value": "postman-do-tag",
       "type": "string"
     },
     {
-      "id": "d154b522-54e0-4c3e-8084-3f18bf2c530c",
+      "id": "f2fb3db0-358d-400d-a330-2742dd8b03e2",
       "key": "image_id",
       "value": "63261821",
       "type": "string"
     },
     {
-      "id": "40d4d8e2-c980-4907-9dec-e2c091fcb2ff",
+      "id": "cf588804-a533-473c-b37a-9b870bad8dce",
       "key": "ssh_pub_demo",
       "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAQQDDHr/jh2Jy4yALcK4JyWbVkPRaWmhck3IgCoeOO3z1e2dBowLh64QAM+Qb72pxekALga2oi4GvT+TlWNhzPH4V example",
       "type": "string"
     },
     {
-      "id": "66985a0c-8c67-4652-84ed-042a2bd63bb4",
+      "id": "f4a08eda-8ec7-4a22-a055-d1ec1c783e4e",
       "key": "ssh_key_id",
       "value": "22162952",
       "type": "string"
     },
     {
-      "id": "22620ee6-1dee-41b9-8d14-1cc92b6a5e88",
+      "id": "857775a4-f1b8-4d7e-8efd-876032ecf7e3",
       "key": "certificate_id",
       "value": "892071a0-bb95-49bc-8021-3afd67a210bf",
       "type": "string"
     },
     {
-      "id": "c4955302-b90f-4e71-9f7a-98645f98ba97",
+      "id": "5273e1ed-f970-4c2e-9b7f-378577569c38",
       "key": "action_id",
       "value": "230459959",
       "type": "string"
     },
     {
-      "id": "e595b5e0-3621-45e3-8289-b18a4223e7cd",
+      "id": "2b897c7a-d19e-4b9c-9dde-9ca7e8e96625",
       "key": "droplet_id",
       "value": "566546",
       "type": "string"
     },
     {
-      "id": "ae192a26-743f-49bb-9f2f-7e22670245e6",
+      "id": "ca7b8e2b-8b7e-4be9-9693-982c1a6e1f30",
       "key": "floating_ip",
       "value": "138.68.119.16",
       "type": "string"
     },
     {
-      "id": "98aa1f02-b92d-43eb-a316-44dd7f63824e",
+      "id": "e37683cf-74a1-440e-8fab-9c7016cb08a2",
       "key": "domain_name",
       "value": "digitalocean.et",
+      "type": "string"
+    },
+    {
+      "id": "1529f0e0-1f53-4648-b2a9-a180e0b5cb84",
+      "key": "type_application",
+      "value": "application",
+      "type": "string"
+    },
+    {
+      "id": "2cb3cbf9-2f47-4c58-8793-3b2ac6f6ccdd",
+      "key": "type_distribution",
+      "value": "distribution",
+      "type": "string"
+    },
+    {
+      "id": "f7511c6f-1fc7-4e9f-9d37-76876165f94a",
+      "key": "is_private",
+      "value": "true",
+      "type": "string"
+    },
+    {
+      "id": "e221adc2-6dcc-4f51-b48b-ab2fc8b58fec",
+      "key": "image_slug",
+      "value": "ubuntu-16-04-x64",
+      "type": "string"
+    },
+    {
+      "id": "40ac42c9-7fbb-4eb2-b5da-666e774ef904",
+      "key": "new_image_name",
+      "value": "etmdb.com-1535652389190",
       "type": "string"
     }
   ]
