@@ -54,7 +54,7 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - [ ] Firewalls
 - [x] Floating IPs
 - [ ] Floating IPs Actions
-- [ ] Images
+- [x] Images
 - [ ] Images Actions
 - [ ] Load Balancers
 - [x] Regions
