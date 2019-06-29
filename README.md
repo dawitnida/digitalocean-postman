@@ -13,7 +13,7 @@ beautifully & well documented API, please refer the [Official DigitalOcean API][
 >> in a simple, programmatic way using conventional HTTP requests. The endpoints are intuitive and
 >> powerful, allowing you to easily make calls to retrieve information or to execute actions.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/3854522/RWTfxgFR)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/3854522/S1a7UQUe)
 
 Please follow this tutorial to import this [Postman Collection][pm-collection].
 
