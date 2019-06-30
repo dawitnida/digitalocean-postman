@@ -13,7 +13,7 @@ beautifully & well documented API, please refer the [Official DigitalOcean API][
 >> in a simple, programmatic way using conventional HTTP requests. The endpoints are intuitive and
 >> powerful, allowing you to easily make calls to retrieve information or to execute actions.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/3854522/S1a7UQUe)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/3854522/S1a7V5Wu)
 
 Please follow this tutorial to import this [Postman Collection][pm-collection].
 
@@ -38,6 +38,7 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - name (domain)
 - region
 - resource_id
+- snapshot_id
 - ssh_key_id
 - tag_name
 
@@ -59,7 +60,7 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - [ ] Load Balancers
 - [x] Regions
 - [x] Sizes
-- [ ] Snapshots
+- [x] Snapshots
 - [x] SSH-Keys
 
 ## Author
