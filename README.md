@@ -36,6 +36,7 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - image_id
 - image name
 - name (domain)
+- project_id
 - region
 - resource_id
 - snapshot_id
@@ -47,7 +48,9 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - [x] Actions
 - [ ] Block Storage
 - [ ] Block Storage Actions
+- [ ] CDN Endpoints
 - [x] Certificates
+- [ ] Databases
 - [x] Domains
 - [ ] Domains Records
 - [x] Droplets
@@ -57,11 +60,15 @@ Please follow this tutorial to import this [Postman Collection][pm-collection].
 - [ ] Floating IPs Actions
 - [x] Images
 - [ ] Images Actions
+- [ ] Kubernetes
 - [ ] Load Balancers
+- [x] Projects
+- [ ] Project Resources 
 - [x] Regions
 - [x] Sizes
 - [x] Snapshots
 - [x] SSH-Keys
+- [ ] Tags
 
 ## Author
 [Dawit Nida](https://github.com/dawitnida)

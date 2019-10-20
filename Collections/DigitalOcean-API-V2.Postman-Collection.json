@@ -5875,6 +5875,1413 @@
       "protocolProfileBehavior": {}
     },
     {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "List All Projects",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/projects",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "To list all your projects, send a GET request to /v2/projects. The response will be a JSON object with a key called projects. The value of this will be an object with the standard project attributes:\n\nName\tType\tDescription\nid\tstring\tThe unique universal identifier of this project.\nowner_uuid\tstring\tThe unique universal identifier of the project owner.\nowner_id\tinteger\tThe integer id of the project owner.\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\nenvironment\tstring\tThe environment of the project's resources.\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was created.\nupdated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was updated."
+          },
+          "response": [
+            {
+              "name": "List All Projects",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/projects",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 18:58:57 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "5f2336ae-64f0-4480-8a0b-ed19c7df0785"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.023343"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d39e2f8fa5ae9-HEL"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"projects\": [\n        {\n            \"id\": \"95361785-9b0c-545454-464545-34343431232\",\n            \"owner_uuid\": \"fe87dtrtrtrt434384c889cecc65d3d8781ed68\",\n            \"owner_id\": 184394,\n            \"name\": \"Dawit Nida\",\n            \"description\": \"Update your project information under Settings\",\n            \"purpose\": \"\",\n            \"environment\": \"Development\",\n            \"is_default\": true,\n            \"created_at\": \"2018-04-01T14:58:39Z\",\n            \"updated_at\": \"2018-09-11T18:09:42Z\"\n        },\n        {\n            \"id\": \"445f0ce9-2c44-4545-5454-34343431232\",\n            \"owner_uuid\": \"fe87dtrtrtrt434384c889cecc65d3d8781ed68ds\",\n            \"owner_id\": 15644,\n            \"name\": \"do-postman-web-api-dev\",\n            \"description\": \"DO Postman API\",\n            \"purpose\": \"Service or API\",\n            \"environment\": \"Development\",\n            \"is_default\": false,\n            \"created_at\": \"2019-10-20T18:56:06Z\",\n            \"updated_at\": \"2019-10-20T18:56:06Z\"\n        },\n        {\n            \"id\": \"fdbae3f0-4e5c-4bac-5454-34343431232\",\n            \"owner_uuid\": \"fe87dtrtrtrt434384c889cecc65d3d8781ed68sdds\",\n            \"owner_id\": 15773,\n            \"name\": \"do-postman-web-api\",\n            \"description\": \"DO Postman API\",\n            \"purpose\": \"Service or API\",\n            \"environment\": \"Staging\",\n            \"is_default\": false,\n            \"created_at\": \"2019-10-20T18:52:26Z\",\n            \"updated_at\": \"2019-10-20T18:52:26Z\"\n        }\n    ],\n    \"links\": {\n        \"pages\": {\n            \"first\": \"https://api.digitalocean.com/v2/projects?page=1\",\n            \"last\": \"https://api.digitalocean.com/v2/projects?page=1\"\n        }\n    },\n    \"meta\": {\n        \"total\": 3\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve an Existing Project",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/projects/{{project_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "projects",
+                "{{project_id}}"
+              ]
+            },
+            "description": "To get a project, send a GET request to /v2/projects/$PROJECT_ID. The response will be a JSON object with a key called project. The value of this will be an object with the standard project attributes:\n\nName\tType\tDescription\nid\tstring\tThe unique universal identifier of this project.\nowner_uuid\tstring\tThe unique universal identifier of the project owner.\nowner_id\tinteger\tThe integer id of the project owner.\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\nenvironment\tstring\tThe environment of the project's resources.\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was created.\nupdated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was updated."
+          },
+          "response": [
+            {
+              "name": "Retrieve an Existing Project",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/projects/{{project_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "{{project_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 19:18:19 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "7fe57d38-1cd6-4f86-a191-6fea47e0d1e4"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.017291"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d5640db715ae9-HEL"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"project\": {\n        \"id\": \"445f0ce9-5555-5555-555-323sdsdsdsd\",\n        \"owner_uuid\": \"323sdsdsdsd323sdsdsdsd323sdsdsdsd323sdsdsdsd\",\n        \"owner_id\": 34234324,\n        \"name\": \"do-postman-web-api-stage\",\n        \"description\": \"DO Postman API Staging\",\n        \"purpose\": \"Service or API\",\n        \"environment\": \"Staging\",\n        \"is_default\": false,\n        \"created_at\": \"2019-10-20T18:56:06Z\",\n        \"updated_at\": \"2019-10-20T19:04:33Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve the Default Project",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/projects/default",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "projects",
+                "default"
+              ]
+            },
+            "description": "To get the default project, send a GET request to /v2/projects/default. The response will be a JSON object with a key called project. The value of this will be an object with the standard project attributes:\n\nName\tType\tDescription\nid\tstring\tThe unique universal identifier of this project.\nowner_uuid\tstring\tThe unique universal identifier of the project owner.\nowner_id\tinteger\tThe integer id of the project owner.\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\nenvironment\tstring\tThe environment of the project's resources.\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was created.\nupdated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was updated."
+          },
+          "response": [
+            {
+              "name": "Retrieve the Default Project",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/projects/default",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "default"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 19:21:30 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "7f7f8332-1c70-44bb-ab1d-10d55d2ee809"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.022679"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d5ae85d015ae9-HEL"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"project\": {\n        \"id\": \"95361785-2323-2323-2323-322323232\",\n        \"owner_uuid\": \"2323ewewe32323ewewe32323ewewe32323ewewe3\",\n        \"owner_id\": 444444,\n        \"name\": \"Dawit Nida\",\n        \"description\": \"Update your project information under Settings\",\n        \"purpose\": \"\",\n        \"environment\": \"Development\",\n        \"is_default\": true,\n        \"created_at\": \"2018-04-01T14:58:39Z\",\n        \"updated_at\": \"2018-09-11T18:09:42Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create a project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"do-postman-web-api-dev\",\n  \"description\": \"DO Postman API\",\n  \"purpose\": \"Service or API\",\n  \"environment\": \"Development\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/projects",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "description": "To create a project, send a POST request to /v2/projects. The following attributes are supported:\n\nName\tType\tDescription\tRequired\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ttrue\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\t\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\ttrue\nenvironment\tstring\tThe environment of the project's resources.\t\nThe response will be a JSON object with a key called project. The value of this will be an object with the standard project attributes:\n\nName\tType\tDescription\nid\tstring\tThe unique universal identifier of this project.\nowner_uuid\tstring\tThe unique universal identifier of the project owner.\nowner_id\tinteger\tThe integer id of the project owner.\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\nenvironment\tstring\tThe environment of the project's resources.\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was created.\nupdated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was updated."
+          },
+          "response": [
+            {
+              "name": "Duplicate project creation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"do-postman-web-api\",\n  \"description\": \"DO Postman API\",\n  \"purpose\": \"Service or API\",\n  \"environment\": \"Staging\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/projects",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 18:54:08 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "8cb8f92d-e404-4736-b3ee-c13ceeae055f"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.016176"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d32d8dfbe5ae9-HEL"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"conflict\",\n    \"message\": \"name is already in use (duplicate)\"\n}"
+            },
+            {
+              "name": "Create a project",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"do-postman-web-api\",\n  \"description\": \"DO Postman API\",\n  \"purpose\": \"Service or API\",\n  \"environment\": \"Staging\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/projects",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 18:52:26 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "334"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "65a77322-334b-4cd2-8306-2ff7deb7f747"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.021679"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d3059483b5ae9-HEL"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"project\": {\n        \"id\": \"fdbae3f0-4e5c-sdsd-8f5e-34343431232\",\n        \"owner_uuid\": \"sdassdsadsaxassdassdsadsaxassdassdsadsaxas\",\n        \"owner_id\": 156753,\n        \"name\": \"do-postman-web-api\",\n        \"description\": \"DO Postman API\",\n        \"purpose\": \"Service or API\",\n        \"environment\": \"Staging\",\n        \"is_default\": false,\n        \"created_at\": \"2019-10-20T18:52:26Z\",\n        \"updated_at\": \"2019-10-20T18:52:26Z\"\n    }\n}"
+            },
+            {
+              "name": "Fail to create a project: read-only token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"do-postman-web-api\",\n  \"description\": \"DO Postman API\",\n  \"purpose\": \"Service or API\",\n  \"environment\": \"Staging\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/projects",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 18:51:17 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "9d010f69-f847-4e3d-a59e-0f6cf64f780c"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.000322"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d2ea5fbdf5ae9-HEL"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"error\": \"cannot modify resource with read-only token\",\n    \"root_causes\": [],\n    \"messages\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update a project",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"do-postman-web-api-stage\",\n  \"description\": \"DO Postman API Staging\",\n  \"purpose\": \"Service or API\",\n  \"environment\": \"Staging\",\n  \"is_default\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/projects/{{project_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "projects",
+                "{{project_id}}"
+              ]
+            },
+            "description": "To update a project, send a PUT request to /v2/projects/$PROJECT_ID. All of the following attributes must be sent:\n\nName\tType\tDescription\tRequired\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters.\ttrue\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\ttrue\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\ttrue\nenvironment\tstring\tThe environment of the project's resources.\t\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ttrue\nThe response will be a JSON object with a key called project. The value of this will be an object with the standard project attributes:\n\nName\tType\tDescription\nid\tstring\tThe unique universal identifier of this project.\nowner_uuid\tstring\tThe unique universal identifier of the project owner.\nowner_id\tinteger\tThe integer id of the project owner.\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\nenvironment\tstring\tThe environment of the project's resources.\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was created.\nupdated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was updated."
+          },
+          "response": [
+            {
+              "name": "Update a project",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"do-postman-web-api-stage\",\n  \"description\": \"DO Postman API Staging\",\n  \"purpose\": \"Service or API\",\n  \"environment\": \"Staging\",\n  \"is_default\": false\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/projects/{{project_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "{{project_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 19:10:23 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "e01153da-4277-4f6b-be8a-6313dd477291"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.038462"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d4aa37c545ae9-HEL"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"project\": {\n        \"id\": \"445f0ce9-2c44-47a7-b27c-c43377f23b99\",\n        \"owner_uuid\": \"fe87reerererfb5cbd1184c889cecc65d3d8781ed68\",\n        \"owner_id\": 2303923,\n        \"name\": \"do-postman-web-api-stage\",\n        \"description\": \"DO Postman API Staging\",\n        \"purpose\": \"Service or API\",\n        \"environment\": \"Staging\",\n        \"is_default\": false,\n        \"created_at\": \"2019-10-20T18:56:06Z\",\n        \"updated_at\": \"2019-10-20T19:04:33Z\"\n    }\n}"
+            },
+            {
+              "name": "Failed to update project (not found)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"do-postman-web-api-stage\",\n  \"description\": \"DO Postman API Staging\",\n  \"purpose\": \"Service or API\",\n  \"environment\": \"Staging\",\n  \"is_default\": false\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/projects/{{project_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "{{project_id}}"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 19:07:11 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "4d6f27c2-2320-423d-8eb2-19cef132b475"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.029695"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d45f2cfe55ae9-HEL"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"not_found\",\n    \"message\": \"project not found\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update the Default Project",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"patch-do-postman-web-api-stage\",\n  \"description\": \"DO Postman API Staging Default\",\n  \"purpose\": \"Service or API Default\",\n  \"environment\": \"Staging\",\n  \"is_default\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/projects/default",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "projects",
+                "default"
+              ]
+            },
+            "description": "To update the default project, send a PUT request to /v2/projects/default. All of the following attributes must be sent:\n\nName\tType\tDescription\tRequired\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters.\ttrue\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\ttrue\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\ttrue\nenvironment\tstring\tThe environment of the project's resources.\t\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ttrue\nThe response will be a JSON object with a key called project. The value of this will be an object with the standard project attributes:\n\nName\tType\tDescription\nid\tstring\tThe unique universal identifier of this project.\nowner_uuid\tstring\tThe unique universal identifier of the project owner.\nowner_id\tinteger\tThe integer id of the project owner.\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\nenvironment\tstring\tThe environment of the project's resources.\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was created.\nupdated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was updated.\n"
+          },
+          "response": [
+            {
+              "name": "Update the Default Project",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"patch-do-postman-web-api-stage\",\n  \"description\": \"DO Postman API Staging Default\",\n  \"purpose\": \"Service or API Default\",\n  \"environment\": \"Staging\",\n  \"is_default\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/projects/default",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "default"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 19:24:46 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "77"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "f7ffc6a1-7bec-426d-9c49-d049b5806934"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.037278"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d5fb84d0f5ae9-HEL"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"project\": {\n        \"id\": \"445f0ce9-2c44-3434-5454-545454\",\n        \"owner_uuid\": \"sfe34sfe34sfe34sfe34sfe34sfe34sfe34\",\n        \"owner_id\": 2303923,\n        \"name\": \"patch-do-postman-web-api-stage\",\n        \"description\": \"DO Postman API Staging Default\",\n        \"purpose\": \"Service or API\",\n        \"environment\": \"Staging\",\n        \"is_default\": true,\n        \"created_at\": \"2019-10-20T18:56:06Z\",\n        \"updated_at\": \"2019-10-20T19:04:33Z\"\n    }\n}"
+            },
+            {
+              "name": "Failed to update the Default Project",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"patch-do-postman-web-api-stage\",\n  \"description\": \"DO Postman API Staging Default\",\n  \"purpose\": \"Service or API Default\",\n  \"environment\": \"Staging\",\n  \"is_default\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/projects/default",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "default"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 19:24:46 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "77"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "f7ffc6a1-7bec-426d-9c49-d049b5806934"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.037278"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d5fb84d0f5ae9-HEL"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"invalid_argument\",\n    \"message\": \"you must always have a default project\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Patch a project",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"environment\": \"Development\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/projects/{{project_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "projects",
+                "{{project_id}}"
+              ]
+            },
+            "description": "To update only specific attributes of a project, send a PATCH request to /v2/projects/$PROJECT_ID. Only one of the following attributes needs to be sent:\n\nName\tType\tDescription\tRequired\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters.\ttrue\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\ttrue\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\ttrue\nenvironment\tstring\tThe environment of the project's resources.\t\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ttrue\nThe response will be a JSON object with a key called project. The value of this will be an object with the standard project attributes:\n\nName\tType\tDescription\nid\tstring\tThe unique universal identifier of this project.\nowner_uuid\tstring\tThe unique universal identifier of the project owner.\nowner_id\tinteger\tThe integer id of the project owner.\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\nenvironment\tstring\tThe environment of the project's resources.\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was created.\nupdated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was updated."
+          },
+          "response": [
+            {
+              "name": "Patch a project",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"environment\": \"Development\"}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/projects/{{project_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "{{project_id}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 19:15:09 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "20e32a00-0c79-4c44-a4bd-f5a5695da7bf"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.078057"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d519cfe1d5ae9-HEL"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"project\": {\n        \"id\": \"95361785-3434-4894-3434-3434343434\",\n        \"owner_uuid\": \"dsdsdsd3e23dsdsdsd3e23dsdsdsd3e23dsdsdsd3e23\",\n        \"owner_id\": 2312312,\n        \"name\": \"Dawit Nida\",\n        \"description\": \"Update your project information under Settings\",\n        \"purpose\": \"\",\n        \"environment\": \"Development\",\n        \"is_default\": true,\n        \"created_at\": \"2018-04-01T14:58:39Z\",\n        \"updated_at\": \"2018-09-11T18:09:42Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Patch the Default Project",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"environment\": \"Production\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/projects/default",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "projects",
+                "default"
+              ]
+            },
+            "description": "To update only specific attributes of the default project, send a PATCH request to /v2/projects/default. Only one of the following attributes needs to be sent:\n\nName\tType\tDescription\tRequired\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters.\ttrue\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\ttrue\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\ttrue\nenvironment\tstring\tThe environment of the project's resources.\t\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ttrue\nThe response will be a JSON object with a key called project. The value of this will be an object with the standard project attributes:\n\nName\tType\tDescription\nid\tstring\tThe unique universal identifier of this project.\nowner_uuid\tstring\tThe unique universal identifier of the project owner.\nowner_id\tinteger\tThe integer id of the project owner.\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\nenvironment\tstring\tThe environment of the project's resources.\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was created.\nupdated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was updated."
+          },
+          "response": [
+            {
+              "name": "Patch the Default Project",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"environment\": \"Production\"}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/projects/default",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "default"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 19:29:26 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "6c138e91-c920-4cd4-b7ab-457d6c4cfb6a"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.039880"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d66889b925ae9-HEL"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"project\": {\n        \"id\": \"95361785-9b0c-3434-543-34343434\",\n        \"owner_uuid\": \"wewfwe23csdcswewfwe23csdcswewfwe23csdcswewfwe23csdcs\",\n        \"owner_id\": 2324232,\n        \"name\": \"Dawit Nida\",\n        \"description\": \"Update your project information under Settings\",\n        \"purpose\": \"\",\n        \"environment\": \"Production\",\n        \"is_default\": true,\n        \"created_at\": \"2018-04-01T14:58:39Z\",\n        \"updated_at\": \"2018-09-11T18:09:42Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete an Existing Project",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{bearer_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/projects/{{project_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "projects",
+                "{{project_id}}"
+              ]
+            },
+            "description": "To delete a project, send a DELETE request to /v2/projects/$PROJECT_ID. To be deleted, a project must not have any resources assigned to it. Any existing resources must first be reassigned or destroyed, or you will receive a 412 error.\n\nA successful request will receive a 204 status code with no body in response. This indicates that the request was processed successfully."
+          },
+          "response": [
+            {
+              "name": "Fail to delete non-exiting project",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{bearer_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/projects/{{project_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "{{project_id}}"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 20 Oct 2019 19:32:49 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Gateway",
+                  "value": "Edge-Gateway"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "e3674191-a983-4fcf-837a-7b4be5bbe6b8"
+                },
+                {
+                  "key": "X-Response-From",
+                  "value": "service"
+                },
+                {
+                  "key": "X-Runtime",
+                  "value": "0.098933"
+                },
+                {
+                  "key": "CF-Cache-Status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "Expect-CT",
+                  "value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+                },
+                {
+                  "key": "Server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "CF-RAY",
+                  "value": "528d6b7be9745ae9-HEL"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"not_found\",\n    \"message\": \"project not found\"\n}"
+            }
+          ]
+        }
+      ],
+      "description": "Projects allow you to organize your resources into groups that fit the way you work. You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs) in ways that align with the applications you host on DigitalOcean.\n\nProjects have the following attributes:\n\nName\tType\tDescription\nid\tstring\tThe unique universal identifier of this project.\nowner_uuid\tstring\tThe unique universal identifier of the project owner.\nowner_id\tinteger\tThe integer id of the project owner.\nname\tstring\tThe human-readable name for the project. The maximum length is 175 characters and the name must be unique.\ndescription\tstring\tThe description of the project. The maximum length is 255 characters.\npurpose\tstring\tThe purpose of the project. The maximum length is 255 characters. For examples of valid purposes, see the \"Purposes\" section\nenvironment\tstring\tThe environment of the project's resources.\nis_default\tboolean\tIf true, all resources will be added to this project if no project is specified.\ncreated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was created.\nupdated_at\tstring\tA time value given in ISO8601 combined date and time format that represents when the project was updated.\nPurposes\nThe purpose attribute can have one of the following values:\nJust trying out DigitalOcean\nClass project / Educational purposes\nWebsite or blog\nWeb Application\nService or API\nMobile Application\nMachine learning / AI / Data processing\nIoT\nOperational / Developer tooling\nIf specify another value for purpose, for example \"your custom purpose\", your purpose will be stored as Other: your custom purpose\nEnvironments\nThe environment attribute must have one of the following values:\nDevelopment\nStaging\nProduction\nIf another value is specified, a 400 Bad Request is returned.",
+      "protocolProfileBehavior": {}
+    },
+    {
       "name": "Regions",
       "item": [
         {
@@ -8011,123 +9418,129 @@
   ],
   "variable": [
     {
-      "id": "a704ac7b-da13-4970-8ec2-33bbcc59853b",
+      "id": "4a13b5aa-1eca-4e86-b610-36c4084f7de8",
       "key": "name",
       "value": "digitalocean.fi",
       "type": "string"
     },
     {
-      "id": "3e6b85f7-6c13-4990-9ddf-f5196a6963a9",
+      "id": "e3dff746-ef59-49f1-8b8a-85de0290aa1c",
       "key": "region",
       "value": "nyc3",
       "type": "string"
     },
     {
-      "id": "0c65da80-6df2-454d-9455-095fc59d1863",
+      "id": "7b79ea0b-a9b1-4978-815e-58d49d3739ae",
       "key": "size",
       "value": "s-1vcpu-1gb",
       "type": "string"
     },
     {
-      "id": "63ddb5dc-f4c5-4d6f-ae31-602933ead75d",
+      "id": "47046f87-f8ec-4849-a8c5-4204b2dcf4cc",
       "key": "image",
       "value": "ubuntu-16-04-x64",
       "type": "string"
     },
     {
-      "id": "23935848-0759-4733-a04a-1971ce3e8417",
+      "id": "ac456a02-fcb9-4e25-8fb2-4afde34861c6",
       "key": "resource_id",
       "value": "523311244",
       "type": "string"
     },
     {
-      "id": "2149821b-a486-4faa-b261-44f9715ea5d0",
+      "id": "ac81e14c-f83b-4f4f-8b73-35ef4ba499b4",
       "key": "tag_name",
       "value": "postman-do-tag",
       "type": "string"
     },
     {
-      "id": "7ecb611b-a15c-4c64-bcb9-d16496a8db61",
+      "id": "90d7c541-9a4b-4c4c-9cd6-d9dec7031e1b",
       "key": "image_id",
       "value": "63261821",
       "type": "string"
     },
     {
-      "id": "4f477080-4139-4315-a2a0-23c875968c7c",
+      "id": "53fb8596-9392-4653-9b70-5a91da606148",
       "key": "ssh_pub_demo",
       "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAQQDDHr/jh2Jy4yALcK4JyWbVkPRaWmhck3IgCoeOO3z1e2dBowLh64QAM+Qb72pxekALga2oi4GvT+TlWNhzPH4V example",
       "type": "string"
     },
     {
-      "id": "2c5fae28-4227-4492-8d65-4642a6782648",
+      "id": "bbcd00d8-4d15-4ac9-b479-399b5520f14c",
       "key": "ssh_key_id",
       "value": "22162952",
       "type": "string"
     },
     {
-      "id": "192ec042-7aad-47d7-a373-d41f831da0b3",
+      "id": "9401ed2b-0f54-4670-92af-2db04a604fc6",
       "key": "certificate_id",
       "value": "892071a0-bb95-49bc-8021-3afd67a210bf",
       "type": "string"
     },
     {
-      "id": "b912ba73-6c6f-4174-a256-d530b9159edd",
+      "id": "fdc285ac-6343-4a50-88e3-fd022d5d29ad",
       "key": "action_id",
       "value": "230459959",
       "type": "string"
     },
     {
-      "id": "cae97b7d-73e6-4617-a1b3-9eeb3c708980",
+      "id": "d12b4f2b-e42e-490d-bea1-8f1163864382",
       "key": "droplet_id",
       "value": "566546",
       "type": "string"
     },
     {
-      "id": "dfb9cf9b-c9af-47b2-9014-083a27fe2f50",
+      "id": "8b4e0dbd-1ae6-4171-aa60-747a01a9a6de",
       "key": "floating_ip",
       "value": "138.68.119.16",
       "type": "string"
     },
     {
-      "id": "624e2a88-580a-4d3e-86fa-e0dc646b59c9",
+      "id": "08c97245-6dff-41da-bbee-8601e9a5d997",
       "key": "domain_name",
       "value": "digitalocean.et",
       "type": "string"
     },
     {
-      "id": "e3fd75cc-a207-486f-b17c-e3e03ece439b",
+      "id": "21ea27c5-eff8-450a-b67f-740e49108cca",
       "key": "type_application",
       "value": "application",
       "type": "string"
     },
     {
-      "id": "0af14a1c-5d2a-41d5-ab78-6bb881b248f7",
+      "id": "3d801dc2-44d8-4d31-b25d-18130b1f208c",
       "key": "type_distribution",
       "value": "distribution",
       "type": "string"
     },
     {
-      "id": "c15c1b84-0787-4c49-9577-3ff9d598458a",
+      "id": "a09886b8-6bd6-41ff-95a7-65f6a5c3a889",
       "key": "is_private",
       "value": "true",
       "type": "string"
     },
     {
-      "id": "a2c8a369-fdfa-4f6a-880b-a82dad856b79",
+      "id": "2e25ce76-cd4f-48a4-9e8c-935068c85b08",
       "key": "image_slug",
       "value": "ubuntu-16-04-x64",
       "type": "string"
     },
     {
-      "id": "5a8ddbf1-5907-45f7-a16b-1ad3e2fbf13b",
+      "id": "01215df9-83ed-4ad0-86a5-18b2eae23bec",
       "key": "new_image_name",
       "value": "etmdb.com-1535652389190",
       "type": "string"
     },
     {
-      "id": "8f024929-0c93-4858-bae9-651f3ea2ce48",
+      "id": "e999b4f0-ad09-4ea2-abfd-8c731e2b32c2",
       "key": "snapshot_id",
       "value": "fbe805e8-866b-11e6-96bf-000f53315a55",
+      "type": "string"
+    },
+    {
+      "id": "46591b41-8bd4-414d-bdf7-637ed8941578",
+      "key": "project_id",
+      "value": "b7d03a6947b217efb6f3ec3bd3504582",
       "type": "string"
     }
   ],
